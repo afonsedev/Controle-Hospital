@@ -72,8 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexao.cs" />
-    <Compile Include="Especialidade.cs" />
-    <Compile Include="Exame.cs" />
+    <Compile Include="Entidades\Especialidade.cs" />
+    <Compile Include="Entidades\Exame.cs" />
     <Compile Include="FrmConsultaExames.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,12 +97,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HOSPITALDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Medico.cs" />
-    <Compile Include="Paciente.cs" />
+    <Compile Include="Entidades\Medico.cs" />
+    <Compile Include="Entidades\Paciente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sala.cs" />
-    <Compile Include="Usuario.cs" />
+    <Compile Include="Entidades\Sala.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <EmbeddedResource Include="FrmConsultaExames.resx">
       <DependentUpon>FrmConsultaExames.cs</DependentUpon>
     </EmbeddedResource>
