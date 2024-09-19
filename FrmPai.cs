@@ -12,11 +12,12 @@ namespace ControleHospital
 {
     public partial class FrmPai : Form
     {
+        private Usuario usuario;
 
-
-        public FrmPai( )
+        public FrmPai(Usuario usuarioPassado)
         {
             InitializeComponent();
+            this.usuario = usuarioPassado;
             InfoUsuario();
         }
 
@@ -46,14 +47,20 @@ namespace ControleHospital
 
             if (conexao.AbrirConexao() != null)
             {
-                LblConectado.Text = $"Conectado";
+                LblConectado.Text = $"Conectado | Funcionário: {usuario.Nome} | Setor: {usuario.Setor}";
                 ImgCheck.Visible = true;                
             }
         }
 
-        private void ImgCheck_Click(object sender, EventArgs e)
+        private void FrmPai_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Tem certeza de que deseja sair?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            
+            if (result == DialogResult.No) 
+            { 
+                e.Cancel = true;
+            }           
+        
         }
     }
 }

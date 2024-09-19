@@ -168,5 +168,8 @@
   <ItemGroup>
     <None Include="Resources\swimlane-security.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -70,7 +70,7 @@ namespace ControleHospital
 
                 // Execute a consulta e obtenha o DataTable
                 DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
-            
+                
 
                 if (string.IsNullOrEmpty(TxtCodigoExame.Text) || resultado.Rows.Count == 0)
                 {
@@ -122,10 +122,7 @@ namespace ControleHospital
                         PngByteQRCode qrCode = new PngByteQRCode(qRCodeData);
                         byte[] qrCodeImage = qrCode.GetGraphic(20);
                         MemoryStream ms = new MemoryStream(qrCodeImage);
-                        ImgQrCodeExame.Image = Image.FromStream(ms);
-
-                        
-
+                        ImgQrCodeExame.Image = Image.FromStream(ms);                      
 
                     }
                 }
@@ -154,7 +151,6 @@ namespace ControleHospital
             
             if(result == DialogResult.Yes)
             {
-
                 Conexao conexao = new Conexao();
 
                 #region Consulta SQL
@@ -178,10 +174,7 @@ namespace ControleHospital
 
                 MessageBox.Show("Agendamento apagado.");
                 //dataGridView1.Rows.Clear();
-                return;
-                
-
-
+                return;               
             }
 
             else 

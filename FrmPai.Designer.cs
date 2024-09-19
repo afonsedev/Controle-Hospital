@@ -125,20 +125,19 @@
             this.panel2.Controls.Add(this.LblConectado);
             this.panel2.Location = new System.Drawing.Point(0, 635);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1365, 55);
+            this.panel2.Size = new System.Drawing.Size(1365, 61);
             this.panel2.TabIndex = 3;
             // 
             // ImgCheck
             // 
-            this.ImgCheck.Image = global::ControleHospital.Properties.Resources.iconCheck;
-            this.ImgCheck.Location = new System.Drawing.Point(396, 12);
+            this.ImgCheck.Image = global::ControleHospital.Properties.Resources.tick;
+            this.ImgCheck.Location = new System.Drawing.Point(405, 13);
             this.ImgCheck.Name = "ImgCheck";
-            this.ImgCheck.Size = new System.Drawing.Size(31, 30);
+            this.ImgCheck.Size = new System.Drawing.Size(23, 23);
             this.ImgCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ImgCheck.TabIndex = 6;
             this.ImgCheck.TabStop = false;
             this.ImgCheck.Visible = false;
-            this.ImgCheck.Click += new System.EventHandler(this.ImgCheck_Click);
             // 
             // label1
             // 
@@ -164,6 +163,7 @@
             this.Name = "FrmPai";
             this.Text = "Sistema de Gerenciamento Hospitalar";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmPai_FormClosing);
             this.panel1.ResumeLayout(false);
             this.contextMenuStrip1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

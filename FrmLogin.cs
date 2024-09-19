@@ -22,23 +22,29 @@ namespace ControleHospital
         {
             try
             {
-                Conexao conexao = new Conexao();               
+                Conexao conexao = new Conexao();
+                
                 #region Consulta SQL
                 string sqlQuery = @"SELECT 
-                                        u.cd_usuario AS 'CÓDIGO USUÁRIO',
-                                        u.nm_usuario AS 'NOME USUÁRIO', 
-                                        u.senha_usuario AS 'SENHA', 
-                                        s.nm_setor AS 'SETOR'
-                                    FROM 
-                                        HOSPITAL.dbo.USUARIO u
-                                    INNER JOIN 
-                                        HOSPITAL.dbo.SETOR s
-                                    ON 
-                                        s.cd_setor = u.cd_setor
-                                    WHERE 
-                                        u.nm_usuario = @nomeUsuario
-                                    AND 
-                                        u.senha_usuario = @senhaUsuario";
+                                     u.cd_usuario AS 'CÓDIGO USUÁRIO',
+                                     u.nm_usuario AS 'NOME USUÁRIO',
+                                     u.senha_usuario AS 'SENHA', 
+                                     s.nm_setor AS 'SETOR',
+                                     f.nm_funcionario AS 'NOME FUNCIONÁRIO'
+                                 FROM 
+                                     HOSPITAL.dbo.USUARIO u
+                                 INNER JOIN 
+                                     HOSPITAL.dbo.SETOR s
+                                 ON 
+                                     s.cd_setor = u.cd_setor
+                                 INNER JOIN 
+                                     HOSPITAL.dbo.FUNCIONARIO f
+                                 ON
+                                     f.cd_funcionario = u.cd_usuario
+                                 WHERE 
+                                     u.nm_usuario = @nomeUsuario
+                                 AND 
+                                     u.senha_usuario = @senhaUsuario";
                 #endregion
 
                 string nomeUsuario = TxtNome.Text;
@@ -56,15 +62,13 @@ namespace ControleHospital
                 {
 
                     Usuario usuarioLogado = new Usuario();
-                    FrmPai frmPai = new FrmPai();
 
                     foreach (DataRow dtr in resultado.Rows)
-                    {
-                       
-                            usuarioLogado.Nome = dtr["NOME USUÁRIO"].ToString();                       
+                    {                       
+                            usuarioLogado.Nome = dtr["NOME FUNCIONÁRIO"].ToString();                       
                             usuarioLogado.Setor = dtr["SETOR"].ToString();                       
                     }
-
+                    FrmPai frmPai = new FrmPai(usuarioLogado);
                     frmPai.Show();
                     this.Hide();
                 }
