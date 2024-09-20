@@ -30,25 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaExames));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.NomePaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeExame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoExame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeMedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CrmMedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Especialidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnPesquisa = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TxtCodigoExame = new System.Windows.Forms.TextBox();
             this.LblConectado = new System.Windows.Forms.Label();
             this.ImgCheck = new System.Windows.Forms.PictureBox();
             this.ImgQrCodeExame = new System.Windows.Forms.PictureBox();
-            this.BtnImprimeCartelaID = new System.Windows.Forms.Button();
+            this.BtnEnviaQrCode = new System.Windows.Forms.Button();
             this.BtnEditaExame = new System.Windows.Forms.Button();
             this.btnApagaExame = new System.Windows.Forms.Button();
+            this.NomePaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeExame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoExame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoAgendamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeMedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CrmMedico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgQrCodeExame)).BeginInit();
@@ -57,14 +59,15 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NomePaciente,
+            this.CPF,
             this.CodigoPaciente,
             this.NomeExame,
             this.CodigoExame,
+            this.CodigoAgendamento,
             this.DATA,
             this.NomeMedico,
             this.CrmMedico,
@@ -74,78 +77,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(34, 81);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dataGridView1.Size = new System.Drawing.Size(777, 321);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // NomePaciente
-            // 
-            this.NomePaciente.DataPropertyName = "NOME PACIENTE";
-            this.NomePaciente.HeaderText = "NOME PACIENTE";
-            this.NomePaciente.Name = "NomePaciente";
-            this.NomePaciente.ReadOnly = true;
-            // 
-            // CodigoPaciente
-            // 
-            this.CodigoPaciente.DataPropertyName = "CÓDIGO PACIENTE";
-            this.CodigoPaciente.HeaderText = "CÓDIGO PACIENTE";
-            this.CodigoPaciente.Name = "CodigoPaciente";
-            this.CodigoPaciente.ReadOnly = true;
-            // 
-            // NomeExame
-            // 
-            this.NomeExame.DataPropertyName = "NOME EXAME";
-            this.NomeExame.HeaderText = "NOME EXAME";
-            this.NomeExame.Name = "NomeExame";
-            this.NomeExame.ReadOnly = true;
-            // 
-            // CodigoExame
-            // 
-            this.CodigoExame.DataPropertyName = "CÓDIGO EXAME";
-            this.CodigoExame.HeaderText = "CÓDIGO EXAME";
-            this.CodigoExame.Name = "CodigoExame";
-            this.CodigoExame.ReadOnly = true;
-            // 
-            // DATA
-            // 
-            this.DATA.DataPropertyName = "DATA";
-            this.DATA.HeaderText = "DATA";
-            this.DATA.Name = "DATA";
-            this.DATA.ReadOnly = true;
-            // 
-            // NomeMedico
-            // 
-            this.NomeMedico.DataPropertyName = "NOME MÉDICO";
-            this.NomeMedico.HeaderText = "NOME MÉDICO";
-            this.NomeMedico.Name = "NomeMedico";
-            this.NomeMedico.ReadOnly = true;
-            // 
-            // CrmMedico
-            // 
-            this.CrmMedico.DataPropertyName = "CRM MÉDICO";
-            this.CrmMedico.HeaderText = "CRM MÉDICO";
-            this.CrmMedico.Name = "CrmMedico";
-            this.CrmMedico.ReadOnly = true;
-            // 
-            // Especialidade
-            // 
-            this.Especialidade.DataPropertyName = "ESPECIALIDADE";
-            this.Especialidade.HeaderText = "ESPECIALIDADE";
-            this.Especialidade.Name = "Especialidade";
-            this.Especialidade.ReadOnly = true;
-            // 
-            // DESCRICAO
-            // 
-            this.DESCRICAO.DataPropertyName = "DESCRIÇÃO";
-            this.DESCRICAO.HeaderText = "DESCRIÇÃO";
-            this.DESCRICAO.Name = "DESCRICAO";
-            this.DESCRICAO.ReadOnly = true;
-            // 
-            // SALA
-            // 
-            this.SALA.DataPropertyName = "SALA";
-            this.SALA.HeaderText = "SALA";
-            this.SALA.Name = "SALA";
-            this.SALA.ReadOnly = true;
             // 
             // BtnPesquisa
             // 
@@ -203,14 +137,14 @@
             this.ImgQrCodeExame.TabIndex = 5;
             this.ImgQrCodeExame.TabStop = false;
             // 
-            // BtnImprimeCartelaID
+            // BtnEnviaQrCode
             // 
-            this.BtnImprimeCartelaID.Location = new System.Drawing.Point(876, 19);
-            this.BtnImprimeCartelaID.Name = "BtnImprimeCartelaID";
-            this.BtnImprimeCartelaID.Size = new System.Drawing.Size(154, 31);
-            this.BtnImprimeCartelaID.TabIndex = 2;
-            this.BtnImprimeCartelaID.Text = "Imprimir ID Exame";
-            this.BtnImprimeCartelaID.UseVisualStyleBackColor = true;
+            this.BtnEnviaQrCode.Location = new System.Drawing.Point(918, 19);
+            this.BtnEnviaQrCode.Name = "BtnEnviaQrCode";
+            this.BtnEnviaQrCode.Size = new System.Drawing.Size(154, 31);
+            this.BtnEnviaQrCode.TabIndex = 2;
+            this.BtnEnviaQrCode.Text = "Enviar ID do Exame";
+            this.BtnEnviaQrCode.UseVisualStyleBackColor = true;
             // 
             // BtnEditaExame
             // 
@@ -233,6 +167,100 @@
             this.btnApagaExame.UseVisualStyleBackColor = true;
             this.btnApagaExame.Click += new System.EventHandler(this.btnApagaExame_Click);
             // 
+            // NomePaciente
+            // 
+            this.NomePaciente.DataPropertyName = "NOME PACIENTE";
+            this.NomePaciente.HeaderText = "NOME PACIENTE";
+            this.NomePaciente.Name = "NomePaciente";
+            this.NomePaciente.ReadOnly = true;
+            this.NomePaciente.Width = 77;
+            // 
+            // CPF
+            // 
+            this.CPF.DataPropertyName = "CPF";
+            this.CPF.HeaderText = "CPF";
+            this.CPF.Name = "CPF";
+            this.CPF.ReadOnly = true;
+            // 
+            // CodigoPaciente
+            // 
+            this.CodigoPaciente.DataPropertyName = "CÓDIGO PACIENTE";
+            this.CodigoPaciente.HeaderText = "CÓDIGO PACIENTE";
+            this.CodigoPaciente.Name = "CodigoPaciente";
+            this.CodigoPaciente.ReadOnly = true;
+            this.CodigoPaciente.Width = 78;
+            // 
+            // NomeExame
+            // 
+            this.NomeExame.DataPropertyName = "NOME EXAME";
+            this.NomeExame.HeaderText = "NOME EXAME";
+            this.NomeExame.Name = "NomeExame";
+            this.NomeExame.ReadOnly = true;
+            this.NomeExame.Width = 77;
+            // 
+            // CodigoExame
+            // 
+            this.CodigoExame.DataPropertyName = "CÓDIGO EXAME";
+            this.CodigoExame.HeaderText = "CÓDIGO EXAME";
+            this.CodigoExame.Name = "CodigoExame";
+            this.CodigoExame.ReadOnly = true;
+            this.CodigoExame.Width = 78;
+            // 
+            // CodigoAgendamento
+            // 
+            this.CodigoAgendamento.DataPropertyName = "CÓDIGO AGENDAMENTO";
+            this.CodigoAgendamento.HeaderText = "CÓDIGO AGENDAMENTO";
+            this.CodigoAgendamento.Name = "CodigoAgendamento";
+            this.CodigoAgendamento.ReadOnly = true;
+            // 
+            // DATA
+            // 
+            this.DATA.DataPropertyName = "DATA";
+            this.DATA.HeaderText = "DATA";
+            this.DATA.Name = "DATA";
+            this.DATA.ReadOnly = true;
+            this.DATA.Width = 77;
+            // 
+            // NomeMedico
+            // 
+            this.NomeMedico.DataPropertyName = "NOME MÉDICO";
+            this.NomeMedico.HeaderText = "NOME MÉDICO";
+            this.NomeMedico.Name = "NomeMedico";
+            this.NomeMedico.ReadOnly = true;
+            this.NomeMedico.Width = 77;
+            // 
+            // CrmMedico
+            // 
+            this.CrmMedico.DataPropertyName = "CRM MÉDICO";
+            this.CrmMedico.HeaderText = "CRM MÉDICO";
+            this.CrmMedico.Name = "CrmMedico";
+            this.CrmMedico.ReadOnly = true;
+            this.CrmMedico.Width = 78;
+            // 
+            // Especialidade
+            // 
+            this.Especialidade.DataPropertyName = "ESPECIALIDADE";
+            this.Especialidade.HeaderText = "ESPECIALIDADE";
+            this.Especialidade.Name = "Especialidade";
+            this.Especialidade.ReadOnly = true;
+            this.Especialidade.Width = 77;
+            // 
+            // DESCRICAO
+            // 
+            this.DESCRICAO.DataPropertyName = "DESCRIÇÃO";
+            this.DESCRICAO.HeaderText = "DESCRIÇÃO";
+            this.DESCRICAO.Name = "DESCRICAO";
+            this.DESCRICAO.ReadOnly = true;
+            this.DESCRICAO.Width = 78;
+            // 
+            // SALA
+            // 
+            this.SALA.DataPropertyName = "SALA";
+            this.SALA.HeaderText = "SALA";
+            this.SALA.Name = "SALA";
+            this.SALA.ReadOnly = true;
+            this.SALA.Width = 77;
+            // 
             // FrmConsultaExames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,7 +268,7 @@
             this.ClientSize = new System.Drawing.Size(1177, 459);
             this.Controls.Add(this.btnApagaExame);
             this.Controls.Add(this.BtnEditaExame);
-            this.Controls.Add(this.BtnImprimeCartelaID);
+            this.Controls.Add(this.BtnEnviaQrCode);
             this.Controls.Add(this.ImgQrCodeExame);
             this.Controls.Add(this.ImgCheck);
             this.Controls.Add(this.LblConectado);
@@ -268,20 +296,22 @@
         private System.Windows.Forms.TextBox TxtCodigoExame;
         private System.Windows.Forms.Label LblConectado;
         private System.Windows.Forms.PictureBox ImgCheck;
+        private System.Windows.Forms.PictureBox ImgQrCodeExame;
+        private System.Windows.Forms.Button BtnEnviaQrCode;
+        private System.Windows.Forms.Button BtnEditaExame;
+        private System.Windows.Forms.Button btnApagaExame;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomePaciente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPF;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeExame;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoExame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoAgendamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATA;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeMedico;
         private System.Windows.Forms.DataGridViewTextBoxColumn CrmMedico;
         private System.Windows.Forms.DataGridViewTextBoxColumn Especialidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALA;
-        private System.Windows.Forms.PictureBox ImgQrCodeExame;
-        private System.Windows.Forms.Button BtnImprimeCartelaID;
-        private System.Windows.Forms.Button BtnEditaExame;
-        private System.Windows.Forms.Button btnApagaExame;
     }
 }
 

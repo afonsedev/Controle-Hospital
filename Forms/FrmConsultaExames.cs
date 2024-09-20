@@ -33,40 +33,50 @@ namespace ControleHospital
             {
                 Conexao conexao = new Conexao();
 
-                if (conexao.AbrirConexao() != null)
-                {  
-                    LblConectado.Text = "Conectado";
-                    ImgCheck.Visible = true;
-                }
+                //if (conexao.AbrirConexao() != null)
+                //{  
+                //    LblConectado.Text = "Conectado";
+                //    ImgCheck.Visible = true;
+                //}
 
 
                 #region Consulta SQL
                 string sqlQuery = @"SELECT
-                                EXAME.cd_exame AS 'CÓDIGO EXAME', 
+                                AGENDAMENTO_EXAME.cd_agendamento_exame AS 'CÓDIGO AGENDAMENTO',
+                                AGENDAMENTO_EXAME.cd_exame AS 'CÓDIGO EXAME', 
+                                AGENDAMENTO_EXAME.dt_exame AS 'DATA', 
+                                AGENDAMENTO_EXAME.cd_crm_medico AS 'CRM MÉDICO',
+                                AGENDAMENTO_EXAME.cd_paciente AS 'CÓDIGO PACIENTE', 
+                                AGENDAMENTO_EXAME.cd_sala AS 'SALA',
                                 EXAME.nm_exame AS 'NOME EXAME', 
-                                EXAME.ds_exame AS 'DESCRIÇÃO', 
-                                EXAME.dt_exame AS 'DATA', 
-                                EXAME.cd_crm_medico AS 'CRM MÉDICO',
-                                PACIENTE.cd_paciente AS 'CÓDIGO PACIENTE', 
+                                EXAME.ds_exame AS 'DESCRIÇÃO',                                 
                                 PACIENTE.nm_paciente AS 'NOME PACIENTE',
+                                PACIENTE.cpf_paciente AS 'CPF',
                                 MEDICO.nm_medico AS 'NOME MÉDICO',
-                                ESPECIALIDADE.nm_especialidade AS 'ESPECIALIDADE',
-                                EXAME.cd_sala AS 'SALA'
-                            FROM HOSPITAL.dbo.EXAME
+                                ESPECIALIDADE.nm_especialidade AS 'ESPECIALIDADE'
+                            FROM HOSPITAL.dbo.AGENDAMENTO_EXAME
+
                             INNER JOIN HOSPITAL.dbo.PACIENTE
-                            ON PACIENTE.cd_paciente = EXAME.cd_paciente
+                            ON PACIENTE.cd_paciente = AGENDAMENTO_EXAME.cd_paciente
+
                             INNER JOIN HOSPITAL.dbo.ESPECIALIDADE
-                            ON ESPECIALIDADE.cd_especialidade = EXAME.cd_especialidade
+                            ON ESPECIALIDADE.cd_especialidade = AGENDAMENTO_EXAME.cd_especialidade
+
                             INNER JOIN HOSPITAL.dbo.MEDICO
-                            ON MEDICO.cd_crm_medico = EXAME.cd_crm_medico                          
-                            WHERE EXAME.cd_exame = @codigoExame";
+                            ON MEDICO.cd_crm_medico = AGENDAMENTO_EXAME.cd_crm_medico
+
+                            INNER JOIN HOSPITAL.dbo.EXAME
+                            ON EXAME.cd_exame = AGENDAMENTO_EXAME.cd_exame
+
+                           WHERE AGENDAMENTO_EXAME.cd_agendamento_exame = @codigoAgendamento";
                 #endregion
 
 
                 // Defina os parâmetros para evitar SQL Injection
                 SqlParameter[] parametros = {
-                new SqlParameter("@codigoExame", TxtCodigoExame.Text)
-        };
+                new SqlParameter("@codigoAgendamento", TxtCodigoExame.Text.Trim()),
+                //new SqlParameter("@cpfPaciente", TxtCodigoExame.Text.Trim()
+                };
 
                 // Execute a consulta e obtenha o DataTable
                 DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
@@ -97,7 +107,9 @@ namespace ControleHospital
                         {
                             paciente.Nome = dtr["NOME PACIENTE"].ToString();
                             paciente.Codigo = Convert.ToInt32(dtr["CÓDIGO PACIENTE"]);
+                            paciente.CPF = dtr["CPF"].ToString();
                             exame.Nome = dtr["NOME EXAME"].ToString();
+                            exame.CodigoAgendamento = Convert.ToInt32(dtr["CÓDIGO AGENDAMENTO"]);
                             exame.Codigo = Convert.ToInt32(dtr["CÓDIGO EXAME"]);
                             exame.Data = Convert.ToDateTime(dtr["DATA"]); // Mantém o DateTime
                             exame.Descricao = dtr["DESCRIÇÃO"].ToString();   
@@ -114,8 +126,10 @@ namespace ControleHospital
                         salas.Add(sala);
                         dataGridView1.DataSource = resultado;
 
-                        var qrCodeInfo = paciente.Nome.ToString() + paciente.Codigo + exame.Nome + exame.Codigo + exame.Data + exame.Descricao + medico.CRM + medico.Nome
-                                                                 + especialidade.Nome + sala.Codigo;
+                        // var qrCodeInfo = paciente.Nome.ToString() + paciente.Codigo + exame.Nome + exame.Codigo + exame.Data + exame.Descricao + medico.CRM + medico.Nome
+                        //                                         + especialidade.Nome + sala.Codigo + exame.CodigoAgendamento;
+                        
+                        var qrCodeInfo = $"Nome {paciente.Nome.ToString()} | Código Paciente: {paciente.Codigo} | Exame: {exame.Nome} | Código Exame: {exame.Codigo} | Data: {exame.Data} | Descrição: {exame.Descricao} | CRM do Médico: {medico.CRM} | Nome do Médico: {medico.Nome} | Especialidade: {especialidade.Nome} | Sala: {sala.Codigo} | Código do Agendamento: {exame.CodigoAgendamento}";
 
                         QRCodeGenerator qrg = new QRCodeGenerator();
                         QRCodeData qRCodeData = qrg.CreateQrCode(qrCodeInfo, QRCodeGenerator.ECCLevel.Q);
