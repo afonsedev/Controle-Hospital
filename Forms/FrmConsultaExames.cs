@@ -33,13 +33,6 @@ namespace ControleHospital
             {
                 Conexao conexao = new Conexao();
 
-                //if (conexao.AbrirConexao() != null)
-                //{  
-                //    LblConectado.Text = "Conectado";
-                //    ImgCheck.Visible = true;
-                //}
-
-
                 #region Consulta SQL
                 string sqlQuery = @"SELECT
                                 AGENDAMENTO_EXAME.cd_agendamento_exame AS 'CÓDIGO AGENDAMENTO',
@@ -129,7 +122,7 @@ namespace ControleHospital
                         // var qrCodeInfo = paciente.Nome.ToString() + paciente.Codigo + exame.Nome + exame.Codigo + exame.Data + exame.Descricao + medico.CRM + medico.Nome
                         //                                         + especialidade.Nome + sala.Codigo + exame.CodigoAgendamento;
                         
-                        var qrCodeInfo = $"Nome {paciente.Nome.ToString()} | Código Paciente: {paciente.Codigo} | Exame: {exame.Nome} | Código Exame: {exame.Codigo} | Data: {exame.Data} | Descrição: {exame.Descricao} | CRM do Médico: {medico.CRM} | Nome do Médico: {medico.Nome} | Especialidade: {especialidade.Nome} | Sala: {sala.Codigo} | Código do Agendamento: {exame.CodigoAgendamento}";
+                        var qrCodeInfo = $"Nome {paciente.Nome} | Código Paciente: {paciente.Codigo} | Exame: {exame.Nome} | Código Exame: {exame.Codigo} | Data: {exame.Data} | Descrição: {exame.Descricao} | CRM do Médico: {medico.CRM} | Nome do Médico: {medico.Nome} | Especialidade: {especialidade.Nome} | Sala: {sala.Codigo} | Código do Agendamento: {exame.CodigoAgendamento}";
 
                         QRCodeGenerator qrg = new QRCodeGenerator();
                         QRCodeData qRCodeData = qrg.CreateQrCode(qrCodeInfo, QRCodeGenerator.ECCLevel.Q);
@@ -151,6 +144,7 @@ namespace ControleHospital
             }
         }
 
+
         private void TxtCodigoExame_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -158,6 +152,7 @@ namespace ControleHospital
                 e.Handled = true; // Bloqueia a tecla pressionada
             }
         }
+
 
         private void btnApagaExame_Click(object sender, EventArgs e)
         {
@@ -170,15 +165,15 @@ namespace ControleHospital
                 #region Consulta SQL
                 string sqlQuery = @"DELETE 
                                     FROM 
-                                      HOSPITAL.dbo.EXAME
+                                      HOSPITAL.dbo.AGENDAMENTO_EXAME
                                     WHERE 
-                                      cd_exame = @codigoExame";
+                                      cd_agendamento_exame = @codigoAgendamento";
                 #endregion
 
 
                 // Defina os parâmetros para evitar SQL Injection
                 SqlParameter[] parametros = {
-                new SqlParameter("@codigoExame", TxtCodigoExame.Text)
+                new SqlParameter("@codigoAgendamento", TxtCodigoExame.Text)
                 };
 
                 // Execute a consulta e obtenha o DataTable

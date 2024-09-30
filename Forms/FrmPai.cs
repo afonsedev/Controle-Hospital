@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControleHospital.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,8 +60,20 @@ namespace ControleHospital
             if (result == DialogResult.No) 
             { 
                 e.Cancel = true;
-            }           
+            }
+
+            else 
+            { 
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Close();
+            }
         
+        }
+
+        private void BtnAgendarExame_Click(object sender, EventArgs e)
+        {
+            FrmAgendaExame frmAgendaExame = new FrmAgendaExame();
+            frmAgendaExame.Show();
         }
     }
 }

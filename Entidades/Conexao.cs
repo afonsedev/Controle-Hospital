@@ -41,10 +41,24 @@ namespace ControleHospital
                 MessageBox.Show("Falha :(");
             }
             
-            return conexao;                        
+            return conexao;
         }
 
-       
+        public void FecharConexao(SqlConnection conexao)
+        {
+            try
+            {
+                if(conexao != null && conexao.State == ConnectionState.Open)
+                {
+                    conexao.Close();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro ao fechar processo.");
+            }
+        }
+
 
 
         // Método para executar uma consulta SQL e retornar um DataTable
@@ -66,6 +80,7 @@ namespace ControleHospital
                         adaptador.Fill(tabela);
                         return tabela;
                     }
+
                 }
             }
         }

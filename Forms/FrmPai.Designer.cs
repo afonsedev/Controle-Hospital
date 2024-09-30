@@ -41,6 +41,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ImgCheck = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.BtnAgendarExame = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,6 +69,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.panel1.Controls.Add(this.BtnAgendarExame);
             this.panel1.Controls.Add(this.BtnHemoBanco);
             this.panel1.Controls.Add(this.BtnConsultarExame);
             this.panel1.Location = new System.Drawing.Point(0, -1);
@@ -78,7 +80,7 @@
             // BtnHemoBanco
             // 
             this.BtnHemoBanco.ContextMenuStrip = this.contextMenuStrip1;
-            this.BtnHemoBanco.Location = new System.Drawing.Point(168, 13);
+            this.BtnHemoBanco.Location = new System.Drawing.Point(294, 13);
             this.BtnHemoBanco.Name = "BtnHemoBanco";
             this.BtnHemoBanco.Size = new System.Drawing.Size(101, 23);
             this.BtnHemoBanco.TabIndex = 2;
@@ -109,7 +111,7 @@
             // 
             // BtnConsultarExame
             // 
-            this.BtnConsultarExame.Location = new System.Drawing.Point(33, 13);
+            this.BtnConsultarExame.Location = new System.Drawing.Point(159, 13);
             this.BtnConsultarExame.Name = "BtnConsultarExame";
             this.BtnConsultarExame.Size = new System.Drawing.Size(101, 23);
             this.BtnConsultarExame.TabIndex = 1;
@@ -149,6 +151,16 @@
             this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 5;
             // 
+            // BtnAgendarExame
+            // 
+            this.BtnAgendarExame.Location = new System.Drawing.Point(33, 13);
+            this.BtnAgendarExame.Name = "BtnAgendarExame";
+            this.BtnAgendarExame.Size = new System.Drawing.Size(101, 23);
+            this.BtnAgendarExame.TabIndex = 0;
+            this.BtnAgendarExame.Text = "Agendar Exame";
+            this.BtnAgendarExame.UseVisualStyleBackColor = true;
+            this.BtnAgendarExame.Click += new System.EventHandler(this.BtnAgendarExame_Click);
+            // 
             // FrmPai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox ImgCheck;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnAgendarExame;
     }
 }
