@@ -180,5 +180,8 @@
   <ItemGroup>
     <None Include="Resources\tick.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Backup Banco\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
