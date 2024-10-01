@@ -95,7 +95,6 @@
             this.transfusãoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(131, 48);
-            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
             // 
             // doaçãoToolStripMenuItem
             // 

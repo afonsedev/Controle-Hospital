@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using QRCoder;
 
 namespace ControleHospital
@@ -118,10 +113,7 @@ namespace ControleHospital
                         especialidades.Add(especialidade);
                         salas.Add(sala);
                         dataGridView1.DataSource = resultado;
-
-                        // var qrCodeInfo = paciente.Nome.ToString() + paciente.Codigo + exame.Nome + exame.Codigo + exame.Data + exame.Descricao + medico.CRM + medico.Nome
-                        //                                         + especialidade.Nome + sala.Codigo + exame.CodigoAgendamento;
-                        
+                                              
                         var qrCodeInfo = $"Nome {paciente.Nome} | Código Paciente: {paciente.Codigo} | Exame: {exame.Nome} | Código Exame: {exame.Codigo} | Data: {exame.Data} | Descrição: {exame.Descricao} | CRM do Médico: {medico.CRM} | Nome do Médico: {medico.Nome} | Especialidade: {especialidade.Nome} | Sala: {sala.Codigo} | Código do Agendamento: {exame.CodigoAgendamento}";
 
                         QRCodeGenerator qrg = new QRCodeGenerator();
@@ -130,7 +122,6 @@ namespace ControleHospital
                         byte[] qrCodeImage = qrCode.GetGraphic(20);
                         MemoryStream ms = new MemoryStream(qrCodeImage);
                         ImgQrCodeExame.Image = Image.FromStream(ms);                      
-
                     }
                 }
             }
@@ -190,6 +181,11 @@ namespace ControleHospital
             {
                 return;
             }
+        }
+
+        private void BtnEditaExame_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

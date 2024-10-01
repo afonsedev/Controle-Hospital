@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgendaExame));
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNomeExame = new System.Windows.Forms.ComboBox();
+            this.TxtNomeExame = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TxtCpfPaciente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -67,15 +67,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Exame";
             // 
-            // txtNomeExame
+            // TxtNomeExame
             // 
-            this.txtNomeExame.FormattingEnabled = true;
-            this.txtNomeExame.Location = new System.Drawing.Point(84, 196);
-            this.txtNomeExame.Name = "txtNomeExame";
-            this.txtNomeExame.Size = new System.Drawing.Size(162, 21);
-            this.txtNomeExame.TabIndex = 2;
-            this.txtNomeExame.SelectedIndexChanged += new System.EventHandler(this.txtNomeExame_SelectedIndexChanged);
-            this.txtNomeExame.TextChanged += new System.EventHandler(this.txtNomeExame_TextChanged);
+            this.TxtNomeExame.FormattingEnabled = true;
+            this.TxtNomeExame.Location = new System.Drawing.Point(84, 196);
+            this.TxtNomeExame.Name = "TxtNomeExame";
+            this.TxtNomeExame.Size = new System.Drawing.Size(162, 21);
+            this.TxtNomeExame.TabIndex = 2;
+            this.TxtNomeExame.TextChanged += new System.EventHandler(this.TxtNomeExame_TextChanged);
             // 
             // label2
             // 
@@ -111,7 +110,8 @@
             this.txtMedicoResponsavelExame.Name = "txtMedicoResponsavelExame";
             this.txtMedicoResponsavelExame.Size = new System.Drawing.Size(162, 21);
             this.txtMedicoResponsavelExame.TabIndex = 3;
-            this.txtMedicoResponsavelExame.DropDown += new System.EventHandler(this.txtMedicoResponsavelExame_DropDown);
+            this.txtMedicoResponsavelExame.DropDown += new System.EventHandler(this.TxtMedicoResponsavelExame_DropDown);
+            this.txtMedicoResponsavelExame.SelectedIndexChanged += new System.EventHandler(this.TxtMedicoResponsavelExame_SelectedIndexChanged);
             // 
             // txtSalaExame
             // 
@@ -231,7 +231,7 @@
             // 
             // BtnAgendaExame
             // 
-            this.BtnAgendaExame.Location = new System.Drawing.Point(504, 298);
+            this.BtnAgendaExame.Location = new System.Drawing.Point(623, 298);
             this.BtnAgendaExame.Name = "BtnAgendaExame";
             this.BtnAgendaExame.Size = new System.Drawing.Size(107, 33);
             this.BtnAgendaExame.TabIndex = 20;
@@ -330,7 +330,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TxtCpfPaciente);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtNomeExame);
+            this.Controls.Add(this.TxtNomeExame);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAgendaExame";
@@ -344,7 +344,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox txtNomeExame;
+        private System.Windows.Forms.ComboBox TxtNomeExame;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtCpfPaciente;
         private System.Windows.Forms.Label label3;

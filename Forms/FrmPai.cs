@@ -30,11 +30,7 @@ namespace ControleHospital
             FrmConsultaExames consultaExames = new FrmConsultaExames();
             consultaExames.Show();
         }
-
-        private void contextMenuStrip1_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void BtnHemoBanco_Click(object sender, EventArgs e)
         {
@@ -64,8 +60,7 @@ namespace ControleHospital
 
             else 
             { 
-                FrmLogin frmLogin = new FrmLogin();
-                frmLogin.Close();
+              Application.Exit();                
             }
         
         }

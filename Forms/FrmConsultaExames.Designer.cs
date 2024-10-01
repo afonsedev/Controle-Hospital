@@ -30,15 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaExames));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.BtnPesquisa = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TxtCodigoExame = new System.Windows.Forms.TextBox();
-            this.LblConectado = new System.Windows.Forms.Label();
-            this.ImgCheck = new System.Windows.Forms.PictureBox();
-            this.ImgQrCodeExame = new System.Windows.Forms.PictureBox();
-            this.BtnEnviaQrCode = new System.Windows.Forms.Button();
-            this.BtnEditaExame = new System.Windows.Forms.Button();
-            this.btnApagaExame = new System.Windows.Forms.Button();
             this.NomePaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +42,15 @@
             this.Especialidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnPesquisa = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TxtCodigoExame = new System.Windows.Forms.TextBox();
+            this.LblConectado = new System.Windows.Forms.Label();
+            this.ImgCheck = new System.Windows.Forms.PictureBox();
+            this.ImgQrCodeExame = new System.Windows.Forms.PictureBox();
+            this.BtnEnviaQrCode = new System.Windows.Forms.Button();
+            this.BtnEditaExame = new System.Windows.Forms.Button();
+            this.btnApagaExame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgQrCodeExame)).BeginInit();
@@ -80,92 +80,6 @@
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.dataGridView1.Size = new System.Drawing.Size(777, 321);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // BtnPesquisa
-            // 
-            this.BtnPesquisa.Location = new System.Drawing.Point(397, 19);
-            this.BtnPesquisa.Name = "BtnPesquisa";
-            this.BtnPesquisa.Size = new System.Drawing.Size(90, 31);
-            this.BtnPesquisa.TabIndex = 1;
-            this.BtnPesquisa.Text = "Pesquisar";
-            this.BtnPesquisa.UseVisualStyleBackColor = true;
-            this.BtnPesquisa.Click += new System.EventHandler(this.BtnPesquisa_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Código do Exame";
-            // 
-            // TxtCodigoExame
-            // 
-            this.TxtCodigoExame.Location = new System.Drawing.Point(127, 19);
-            this.TxtCodigoExame.Multiline = true;
-            this.TxtCodigoExame.Name = "TxtCodigoExame";
-            this.TxtCodigoExame.Size = new System.Drawing.Size(175, 23);
-            this.TxtCodigoExame.TabIndex = 0;
-            this.TxtCodigoExame.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigoExame_KeyPress);
-            // 
-            // LblConectado
-            // 
-            this.LblConectado.AutoSize = true;
-            this.LblConectado.Location = new System.Drawing.Point(31, 417);
-            this.LblConectado.Name = "LblConectado";
-            this.LblConectado.Size = new System.Drawing.Size(0, 13);
-            this.LblConectado.TabIndex = 3;
-            // 
-            // ImgCheck
-            // 
-            this.ImgCheck.Image = global::ControleHospital.Properties.Resources.iconCheck;
-            this.ImgCheck.Location = new System.Drawing.Point(90, 408);
-            this.ImgCheck.Name = "ImgCheck";
-            this.ImgCheck.Size = new System.Drawing.Size(31, 30);
-            this.ImgCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ImgCheck.TabIndex = 4;
-            this.ImgCheck.TabStop = false;
-            this.ImgCheck.Visible = false;
-            // 
-            // ImgQrCodeExame
-            // 
-            this.ImgQrCodeExame.Location = new System.Drawing.Point(876, 125);
-            this.ImgQrCodeExame.Name = "ImgQrCodeExame";
-            this.ImgQrCodeExame.Size = new System.Drawing.Size(266, 228);
-            this.ImgQrCodeExame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ImgQrCodeExame.TabIndex = 5;
-            this.ImgQrCodeExame.TabStop = false;
-            // 
-            // BtnEnviaQrCode
-            // 
-            this.BtnEnviaQrCode.Location = new System.Drawing.Point(918, 19);
-            this.BtnEnviaQrCode.Name = "BtnEnviaQrCode";
-            this.BtnEnviaQrCode.Size = new System.Drawing.Size(154, 31);
-            this.BtnEnviaQrCode.TabIndex = 2;
-            this.BtnEnviaQrCode.Text = "Enviar ID do Exame";
-            this.BtnEnviaQrCode.UseVisualStyleBackColor = true;
-            // 
-            // BtnEditaExame
-            // 
-            this.BtnEditaExame.Location = new System.Drawing.Point(615, 19);
-            this.BtnEditaExame.Name = "BtnEditaExame";
-            this.BtnEditaExame.Size = new System.Drawing.Size(90, 31);
-            this.BtnEditaExame.TabIndex = 7;
-            this.BtnEditaExame.TabStop = false;
-            this.BtnEditaExame.Text = "Editar";
-            this.BtnEditaExame.UseVisualStyleBackColor = true;
-            // 
-            // btnApagaExame
-            // 
-            this.btnApagaExame.Location = new System.Drawing.Point(721, 15);
-            this.btnApagaExame.Name = "btnApagaExame";
-            this.btnApagaExame.Size = new System.Drawing.Size(90, 39);
-            this.btnApagaExame.TabIndex = 8;
-            this.btnApagaExame.TabStop = false;
-            this.btnApagaExame.Text = "Apagar Agendamento";
-            this.btnApagaExame.UseVisualStyleBackColor = true;
-            this.btnApagaExame.Click += new System.EventHandler(this.btnApagaExame_Click);
             // 
             // NomePaciente
             // 
@@ -260,6 +174,93 @@
             this.SALA.Name = "SALA";
             this.SALA.ReadOnly = true;
             this.SALA.Width = 77;
+            // 
+            // BtnPesquisa
+            // 
+            this.BtnPesquisa.Location = new System.Drawing.Point(397, 19);
+            this.BtnPesquisa.Name = "BtnPesquisa";
+            this.BtnPesquisa.Size = new System.Drawing.Size(90, 31);
+            this.BtnPesquisa.TabIndex = 1;
+            this.BtnPesquisa.Text = "Pesquisar";
+            this.BtnPesquisa.UseVisualStyleBackColor = true;
+            this.BtnPesquisa.Click += new System.EventHandler(this.BtnPesquisa_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Código do Exame";
+            // 
+            // TxtCodigoExame
+            // 
+            this.TxtCodigoExame.Location = new System.Drawing.Point(127, 19);
+            this.TxtCodigoExame.Multiline = true;
+            this.TxtCodigoExame.Name = "TxtCodigoExame";
+            this.TxtCodigoExame.Size = new System.Drawing.Size(175, 23);
+            this.TxtCodigoExame.TabIndex = 0;
+            this.TxtCodigoExame.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigoExame_KeyPress);
+            // 
+            // LblConectado
+            // 
+            this.LblConectado.AutoSize = true;
+            this.LblConectado.Location = new System.Drawing.Point(31, 417);
+            this.LblConectado.Name = "LblConectado";
+            this.LblConectado.Size = new System.Drawing.Size(0, 13);
+            this.LblConectado.TabIndex = 3;
+            // 
+            // ImgCheck
+            // 
+            this.ImgCheck.Image = global::ControleHospital.Properties.Resources.iconCheck;
+            this.ImgCheck.Location = new System.Drawing.Point(90, 408);
+            this.ImgCheck.Name = "ImgCheck";
+            this.ImgCheck.Size = new System.Drawing.Size(31, 30);
+            this.ImgCheck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgCheck.TabIndex = 4;
+            this.ImgCheck.TabStop = false;
+            this.ImgCheck.Visible = false;
+            // 
+            // ImgQrCodeExame
+            // 
+            this.ImgQrCodeExame.Location = new System.Drawing.Point(876, 125);
+            this.ImgQrCodeExame.Name = "ImgQrCodeExame";
+            this.ImgQrCodeExame.Size = new System.Drawing.Size(266, 228);
+            this.ImgQrCodeExame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ImgQrCodeExame.TabIndex = 5;
+            this.ImgQrCodeExame.TabStop = false;
+            // 
+            // BtnEnviaQrCode
+            // 
+            this.BtnEnviaQrCode.Location = new System.Drawing.Point(918, 19);
+            this.BtnEnviaQrCode.Name = "BtnEnviaQrCode";
+            this.BtnEnviaQrCode.Size = new System.Drawing.Size(154, 31);
+            this.BtnEnviaQrCode.TabIndex = 2;
+            this.BtnEnviaQrCode.Text = "Enviar ID do Exame";
+            this.BtnEnviaQrCode.UseVisualStyleBackColor = true;
+            // 
+            // BtnEditaExame
+            // 
+            this.BtnEditaExame.Location = new System.Drawing.Point(615, 19);
+            this.BtnEditaExame.Name = "BtnEditaExame";
+            this.BtnEditaExame.Size = new System.Drawing.Size(90, 31);
+            this.BtnEditaExame.TabIndex = 7;
+            this.BtnEditaExame.TabStop = false;
+            this.BtnEditaExame.Text = "Editar";
+            this.BtnEditaExame.UseVisualStyleBackColor = true;
+            this.BtnEditaExame.Click += new System.EventHandler(this.BtnEditaExame_Click);
+            // 
+            // btnApagaExame
+            // 
+            this.btnApagaExame.Location = new System.Drawing.Point(721, 15);
+            this.btnApagaExame.Name = "btnApagaExame";
+            this.btnApagaExame.Size = new System.Drawing.Size(90, 39);
+            this.btnApagaExame.TabIndex = 8;
+            this.btnApagaExame.TabStop = false;
+            this.btnApagaExame.Text = "Apagar Agendamento";
+            this.btnApagaExame.UseVisualStyleBackColor = true;
+            this.btnApagaExame.Click += new System.EventHandler(this.btnApagaExame_Click);
             // 
             // FrmConsultaExames
             // 
