@@ -9,9 +9,38 @@ namespace ControleHospital.Forms
 {
     public partial class FrmAgendaExame : Form
     {
+
+        public bool IsEditing = false;
+
+
         public FrmAgendaExame()
         {
             InitializeComponent();
+        }
+
+        public FrmAgendaExame (string nomeExame, DateTime dataExame, int codigoPaciente, string cpfPaciente, string nomePaciente, int crmMedico, string nomeMedico, string especialidade, int sala, int codigoAgendamento)
+        {
+            InitializeComponent();
+            TxtNomeExame.Text = nomeExame;
+            DateTimeExame.Value = dataExame;
+            TxtCodigoPaciente.Text = codigoPaciente.ToString();
+            TxtNomePaciente.Text = nomePaciente;
+            TxtCpfPaciente.Text = cpfPaciente;
+            TxtCrmMedico.Text = crmMedico.ToString();
+            txtMedicoResponsavelExame.Text = nomeMedico;
+            txtEspecialidadeExame.Text = especialidade;
+            txtSalaExame.Text = sala.ToString();
+            TxtCodigoAgendamento.Text = codigoAgendamento.ToString();
+
+            IsEditing = true;
+
+           
+            Text = "Editar Exame";
+            BtnAgendaExame.Text = "Editar Agendamento";
+            
+
+            //Name = "Editar Exame";
+            //TxtNomeExame.DroppedDown = false;
         }
 
         private void FrmAdicionaAgendamentoExame_Load(object sender, EventArgs e)
@@ -22,7 +51,7 @@ namespace ControleHospital.Forms
         //Eventos
         private void BtnAgendaExame_Click(object sender, EventArgs e)
         {
-            AgendarExame();
+            AgendarOuEditarExame();
         }
 
 
@@ -286,15 +315,20 @@ namespace ControleHospital.Forms
 
 
         #region Método para Agendar Exame
-        public void AgendarExame()
+        public void AgendarOuEditarExame()
         {
             try
             {
                 Conexao conexao = new Conexao();
                 Especialidade especialidade = new Especialidade();
-
-                string sqlQuery = @"INSERT INTO HOSPITAL.dbo.AGENDAMENTO_EXAME
+                
+                string sqlQueryAgendar = @"INSERT INTO HOSPITAL.dbo.AGENDAMENTO_EXAME
                                     VALUES (@codigoExame, @dataExame, @codigoPaciente, @crmMedico, @especialidade, @sala)";
+
+
+                string sqlQueryEditarAgendamento = @"UPDATE HOSPITAL.dbo.AGENDAMENTO_EXAME
+                                                    SET cd_exame = @codigoExame, dt_exame = @dataExame, cd_paciente = @codigoPaciente, cd_crm_medico = @crmMedico, cd_especialidade = @Especialidade, cd_sala = @sala
+                                                    WHERE cd_agendamento_exame = @CodigoAgendamento";
 
                 SqlParameter[] parametros = {
                     new SqlParameter("@codigoExame", TxtCodigoExame.Text),
@@ -302,12 +336,22 @@ namespace ControleHospital.Forms
                     new SqlParameter("@codigoPaciente", TxtCodigoPaciente.Text),
                     new SqlParameter("@crmMedico", TxtCrmMedico.Text),
                     new SqlParameter("@especialidade", TxtCodigoEspecialidade.Text),
-                    new SqlParameter("@sala", txtSalaExame.Text)
+                    new SqlParameter("@sala", txtSalaExame.Text),
+                    new SqlParameter("@codigoAgendamento", TxtCodigoAgendamento.Text)
                 };
 
-                DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
+                if (IsEditing == true)
+                {
+                    DataTable resultado = conexao.ExecutarConsulta(sqlQueryEditarAgendamento, parametros);
+                    MessageBox.Show("Alterações realizadas com sucesso");
+                    return;
+                }
 
-                MessageBox.Show("Agendamento realizado com sucesso");
+                else 
+                {
+                    DataTable resultado = conexao.ExecutarConsulta(sqlQueryAgendar, parametros);
+                    MessageBox.Show("Agendamento realizado com sucesso");
+                }
             }
 
 
@@ -317,6 +361,6 @@ namespace ControleHospital.Forms
                 return;
             }            
         }
-        #endregion        
+        #endregion
     }
 }

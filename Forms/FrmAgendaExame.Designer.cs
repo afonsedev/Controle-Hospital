@@ -56,6 +56,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.TxtCodigoEspecialidade = new System.Windows.Forms.TextBox();
             this.CodigoEspecialidade = new System.Windows.Forms.Label();
+            this.TxtCodigoAgendamento = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -231,9 +233,9 @@
             // 
             // BtnAgendaExame
             // 
-            this.BtnAgendaExame.Location = new System.Drawing.Point(623, 298);
+            this.BtnAgendaExame.Location = new System.Drawing.Point(608, 298);
             this.BtnAgendaExame.Name = "BtnAgendaExame";
-            this.BtnAgendaExame.Size = new System.Drawing.Size(107, 33);
+            this.BtnAgendaExame.Size = new System.Drawing.Size(122, 44);
             this.BtnAgendaExame.TabIndex = 20;
             this.BtnAgendaExame.Text = "Agendar";
             this.BtnAgendaExame.UseVisualStyleBackColor = true;
@@ -300,11 +302,32 @@
             this.CodigoEspecialidade.Text = "CódigoEsp";
             this.CodigoEspecialidade.Visible = false;
             // 
+            // TxtCodigoAgendamento
+            // 
+            this.TxtCodigoAgendamento.Location = new System.Drawing.Point(243, 309);
+            this.TxtCodigoAgendamento.Name = "TxtCodigoAgendamento";
+            this.TxtCodigoAgendamento.ReadOnly = true;
+            this.TxtCodigoAgendamento.Size = new System.Drawing.Size(40, 20);
+            this.TxtCodigoAgendamento.TabIndex = 28;
+            this.TxtCodigoAgendamento.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(163, 312);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(74, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "CódigoAgend.";
+            this.label14.Visible = false;
+            // 
             // FrmAgendaExame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(776, 370);
+            this.Controls.Add(this.TxtCodigoAgendamento);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.TxtCodigoEspecialidade);
             this.Controls.Add(this.CodigoEspecialidade);
             this.Controls.Add(this.TxtCodigoExame);
@@ -370,5 +393,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox TxtCodigoEspecialidade;
         private System.Windows.Forms.Label CodigoEspecialidade;
+        private System.Windows.Forms.TextBox TxtCodigoAgendamento;
+        private System.Windows.Forms.Label label14;
     }
 }

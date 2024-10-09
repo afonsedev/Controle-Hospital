@@ -28,7 +28,7 @@ namespace ControleHospital
         private void BtnConsultarExame_Click(object sender, EventArgs e)
         {
             FrmConsultaExames consultaExames = new FrmConsultaExames();
-            consultaExames.Show();
+            consultaExames.Show();            
         }
       
 

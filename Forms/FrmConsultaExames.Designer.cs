@@ -50,7 +50,7 @@
             this.ImgQrCodeExame = new System.Windows.Forms.PictureBox();
             this.BtnEnviaQrCode = new System.Windows.Forms.Button();
             this.BtnEditaExame = new System.Windows.Forms.Button();
-            this.btnApagaExame = new System.Windows.Forms.Button();
+            this.BtnApagaExame = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImgQrCodeExame)).BeginInit();
@@ -251,23 +251,22 @@
             this.BtnEditaExame.UseVisualStyleBackColor = true;
             this.BtnEditaExame.Click += new System.EventHandler(this.BtnEditaExame_Click);
             // 
-            // btnApagaExame
+            // BtnApagaExame
             // 
-            this.btnApagaExame.Location = new System.Drawing.Point(721, 15);
-            this.btnApagaExame.Name = "btnApagaExame";
-            this.btnApagaExame.Size = new System.Drawing.Size(90, 39);
-            this.btnApagaExame.TabIndex = 8;
-            this.btnApagaExame.TabStop = false;
-            this.btnApagaExame.Text = "Apagar Agendamento";
-            this.btnApagaExame.UseVisualStyleBackColor = true;
-            this.btnApagaExame.Click += new System.EventHandler(this.btnApagaExame_Click);
+            this.BtnApagaExame.Location = new System.Drawing.Point(721, 15);
+            this.BtnApagaExame.Name = "BtnApagaExame";
+            this.BtnApagaExame.Size = new System.Drawing.Size(90, 39);
+            this.BtnApagaExame.TabIndex = 8;
+            this.BtnApagaExame.TabStop = false;
+            this.BtnApagaExame.Text = "Apagar Agendamento";
+            this.BtnApagaExame.UseVisualStyleBackColor = true;
             // 
             // FrmConsultaExames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 459);
-            this.Controls.Add(this.btnApagaExame);
+            this.Controls.Add(this.BtnApagaExame);
             this.Controls.Add(this.BtnEditaExame);
             this.Controls.Add(this.BtnEnviaQrCode);
             this.Controls.Add(this.ImgQrCodeExame);
@@ -300,7 +299,7 @@
         private System.Windows.Forms.PictureBox ImgQrCodeExame;
         private System.Windows.Forms.Button BtnEnviaQrCode;
         private System.Windows.Forms.Button BtnEditaExame;
-        private System.Windows.Forms.Button btnApagaExame;
+        private System.Windows.Forms.Button BtnApagaExame;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomePaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn CPF;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoPaciente;
