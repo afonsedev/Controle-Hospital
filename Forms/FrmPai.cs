@@ -1,13 +1,7 @@
 ﻿using ControleHospital.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ControleHospital
 {
@@ -21,10 +15,7 @@ namespace ControleHospital
             this.usuario = usuarioPassado;
             InfoUsuario();
         }
-
-     
-
-
+    
         private void BtnConsultarExame_Click(object sender, EventArgs e)
         {
             FrmConsultaExames consultaExames = new FrmConsultaExames();
@@ -69,6 +60,17 @@ namespace ControleHospital
         {
             FrmAgendaExame frmAgendaExame = new FrmAgendaExame();
             frmAgendaExame.Show();
+        }
+
+        private void transfusãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAgendaTransfusao frmAgendaTransfusao = new FrmAgendaTransfusao();
+            frmAgendaTransfusao.ShowDialog();
+        }
+
+        private void FrmPai_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

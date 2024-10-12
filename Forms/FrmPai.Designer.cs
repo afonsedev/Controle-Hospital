@@ -33,6 +33,7 @@
             this.LblConectado = new System.Windows.Forms.Label();
             this.LblInfoColaborador = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnAgendarExame = new System.Windows.Forms.Button();
             this.BtnHemoBanco = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.doaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ImgCheck = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.BtnAgendarExame = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -77,6 +77,16 @@
             this.panel1.Size = new System.Drawing.Size(1365, 55);
             this.panel1.TabIndex = 2;
             // 
+            // BtnAgendarExame
+            // 
+            this.BtnAgendarExame.Location = new System.Drawing.Point(33, 13);
+            this.BtnAgendarExame.Name = "BtnAgendarExame";
+            this.BtnAgendarExame.Size = new System.Drawing.Size(101, 23);
+            this.BtnAgendarExame.TabIndex = 0;
+            this.BtnAgendarExame.Text = "Agendar Exame";
+            this.BtnAgendarExame.UseVisualStyleBackColor = true;
+            this.BtnAgendarExame.Click += new System.EventHandler(this.BtnAgendarExame_Click);
+            // 
             // BtnHemoBanco
             // 
             this.BtnHemoBanco.ContextMenuStrip = this.contextMenuStrip1;
@@ -94,19 +104,20 @@
             this.doaçãoToolStripMenuItem,
             this.transfusãoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // doaçãoToolStripMenuItem
             // 
             this.doaçãoToolStripMenuItem.Name = "doaçãoToolStripMenuItem";
-            this.doaçãoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.doaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.doaçãoToolStripMenuItem.Text = "Doação";
             // 
             // transfusãoToolStripMenuItem
             // 
             this.transfusãoToolStripMenuItem.Name = "transfusãoToolStripMenuItem";
-            this.transfusãoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.transfusãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.transfusãoToolStripMenuItem.Text = "Transfusão";
+            this.transfusãoToolStripMenuItem.Click += new System.EventHandler(this.transfusãoToolStripMenuItem_Click);
             // 
             // BtnConsultarExame
             // 
@@ -149,16 +160,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 5;
-            // 
-            // BtnAgendarExame
-            // 
-            this.BtnAgendarExame.Location = new System.Drawing.Point(33, 13);
-            this.BtnAgendarExame.Name = "BtnAgendarExame";
-            this.BtnAgendarExame.Size = new System.Drawing.Size(101, 23);
-            this.BtnAgendarExame.TabIndex = 0;
-            this.BtnAgendarExame.Text = "Agendar Exame";
-            this.BtnAgendarExame.UseVisualStyleBackColor = true;
-            this.BtnAgendarExame.Click += new System.EventHandler(this.BtnAgendarExame_Click);
             // 
             // FrmPai
             // 

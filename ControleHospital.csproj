@@ -80,6 +80,12 @@
     <Compile Include="Forms\FrmAgendaExame.Designer.cs">
       <DependentUpon>FrmAgendaExame.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmAgendaTransfusao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAgendaTransfusao.Designer.cs">
+      <DependentUpon>FrmAgendaTransfusao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmConsultaExames.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,8 +115,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entidades\Sala.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Repository\LoginRepository.cs" />
     <EmbeddedResource Include="Forms\FrmAgendaExame.resx">
       <DependentUpon>FrmAgendaExame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAgendaTransfusao.resx">
+      <DependentUpon>FrmAgendaTransfusao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmConsultaExames.resx">
       <DependentUpon>FrmConsultaExames.cs</DependentUpon>
@@ -180,7 +190,11 @@
   <ItemGroup>
     <None Include="Resources\tick.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Handler\" />
+    <Folder Include="Manager\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Backup Banco 2\script.sql" />
   </ItemGroup>

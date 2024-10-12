@@ -71,10 +71,11 @@
             // 
             // TxtNomeExame
             // 
+            this.TxtNomeExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNomeExame.FormattingEnabled = true;
             this.TxtNomeExame.Location = new System.Drawing.Point(84, 196);
             this.TxtNomeExame.Name = "TxtNomeExame";
-            this.TxtNomeExame.Size = new System.Drawing.Size(162, 21);
+            this.TxtNomeExame.Size = new System.Drawing.Size(162, 28);
             this.TxtNomeExame.TabIndex = 2;
             this.TxtNomeExame.TextChanged += new System.EventHandler(this.TxtNomeExame_TextChanged);
             // 
@@ -89,9 +90,11 @@
             // 
             // TxtCpfPaciente
             // 
+            this.TxtCpfPaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCpfPaciente.Location = new System.Drawing.Point(117, 52);
+            this.TxtCpfPaciente.Multiline = true;
             this.TxtCpfPaciente.Name = "TxtCpfPaciente";
-            this.TxtCpfPaciente.Size = new System.Drawing.Size(120, 20);
+            this.TxtCpfPaciente.Size = new System.Drawing.Size(143, 29);
             this.TxtCpfPaciente.TabIndex = 1;
             this.TxtCpfPaciente.TextChanged += new System.EventHandler(this.TxtCpfPaciente_TextChanged);
             this.TxtCpfPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCpfPaciente_KeyPress);
@@ -99,7 +102,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 236);
+            this.label3.Location = new System.Drawing.Point(26, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.TabIndex = 4;
@@ -107,26 +110,28 @@
             // 
             // txtMedicoResponsavelExame
             // 
+            this.txtMedicoResponsavelExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMedicoResponsavelExame.FormattingEnabled = true;
-            this.txtMedicoResponsavelExame.Location = new System.Drawing.Point(84, 233);
+            this.txtMedicoResponsavelExame.Location = new System.Drawing.Point(84, 242);
             this.txtMedicoResponsavelExame.Name = "txtMedicoResponsavelExame";
-            this.txtMedicoResponsavelExame.Size = new System.Drawing.Size(162, 21);
+            this.txtMedicoResponsavelExame.Size = new System.Drawing.Size(162, 24);
             this.txtMedicoResponsavelExame.TabIndex = 3;
             this.txtMedicoResponsavelExame.DropDown += new System.EventHandler(this.TxtMedicoResponsavelExame_DropDown);
             this.txtMedicoResponsavelExame.SelectedIndexChanged += new System.EventHandler(this.TxtMedicoResponsavelExame_SelectedIndexChanged);
             // 
             // txtSalaExame
             // 
+            this.txtSalaExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSalaExame.FormattingEnabled = true;
-            this.txtSalaExame.Location = new System.Drawing.Point(446, 236);
+            this.txtSalaExame.Location = new System.Drawing.Point(446, 242);
             this.txtSalaExame.Name = "txtSalaExame";
-            this.txtSalaExame.Size = new System.Drawing.Size(49, 21);
+            this.txtSalaExame.Size = new System.Drawing.Size(49, 28);
             this.txtSalaExame.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(412, 242);
+            this.label4.Location = new System.Drawing.Point(412, 250);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(28, 13);
             this.label4.TabIndex = 7;
@@ -135,17 +140,18 @@
             // DateTimeExame
             // 
             this.DateTimeExame.CustomFormat = "dd/MM/yyyy HH:mm";
+            this.DateTimeExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeExame.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeExame.Location = new System.Drawing.Point(592, 239);
+            this.DateTimeExame.Location = new System.Drawing.Point(592, 245);
             this.DateTimeExame.Name = "DateTimeExame";
-            this.DateTimeExame.Size = new System.Drawing.Size(138, 20);
+            this.DateTimeExame.Size = new System.Drawing.Size(151, 22);
             this.DateTimeExame.TabIndex = 5;
             this.DateTimeExame.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimeExame_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(521, 242);
+            this.label5.Location = new System.Drawing.Point(525, 250);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 9;
@@ -154,7 +160,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(286, 202);
+            this.label6.Location = new System.Drawing.Point(276, 201);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 10;
@@ -162,18 +168,21 @@
             // 
             // txtEspecialidadeExame
             // 
-            this.txtEspecialidadeExame.Location = new System.Drawing.Point(365, 199);
+            this.txtEspecialidadeExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEspecialidadeExame.Location = new System.Drawing.Point(355, 198);
             this.txtEspecialidadeExame.Name = "txtEspecialidadeExame";
             this.txtEspecialidadeExame.ReadOnly = true;
-            this.txtEspecialidadeExame.Size = new System.Drawing.Size(144, 20);
+            this.txtEspecialidadeExame.Size = new System.Drawing.Size(144, 26);
             this.txtEspecialidadeExame.TabIndex = 8;
             // 
             // TxtNomePaciente
             // 
+            this.TxtNomePaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtNomePaciente.Location = new System.Drawing.Point(352, 52);
+            this.TxtNomePaciente.Multiline = true;
             this.TxtNomePaciente.Name = "TxtNomePaciente";
             this.TxtNomePaciente.ReadOnly = true;
-            this.TxtNomePaciente.Size = new System.Drawing.Size(120, 20);
+            this.TxtNomePaciente.Size = new System.Drawing.Size(143, 29);
             this.TxtNomePaciente.TabIndex = 6;
             // 
             // label7
@@ -187,10 +196,12 @@
             // 
             // TxtCodigoPaciente
             // 
+            this.TxtCodigoPaciente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TxtCodigoPaciente.Location = new System.Drawing.Point(117, 93);
+            this.TxtCodigoPaciente.Multiline = true;
             this.TxtCodigoPaciente.Name = "TxtCodigoPaciente";
             this.TxtCodigoPaciente.ReadOnly = true;
-            this.TxtCodigoPaciente.Size = new System.Drawing.Size(120, 20);
+            this.TxtCodigoPaciente.Size = new System.Drawing.Size(143, 29);
             this.TxtCodigoPaciente.TabIndex = 12;
             // 
             // label8
@@ -233,7 +244,7 @@
             // 
             // BtnAgendaExame
             // 
-            this.BtnAgendaExame.Location = new System.Drawing.Point(608, 298);
+            this.BtnAgendaExame.Location = new System.Drawing.Point(621, 312);
             this.BtnAgendaExame.Name = "BtnAgendaExame";
             this.BtnAgendaExame.Size = new System.Drawing.Size(122, 44);
             this.BtnAgendaExame.TabIndex = 20;
@@ -243,24 +254,27 @@
             // 
             // TxtDataNascimento
             // 
-            this.TxtDataNascimento.Location = new System.Drawing.Point(414, 97);
+            this.TxtDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtDataNascimento.Location = new System.Drawing.Point(415, 93);
+            this.TxtDataNascimento.Multiline = true;
             this.TxtDataNascimento.Name = "TxtDataNascimento";
             this.TxtDataNascimento.ReadOnly = true;
-            this.TxtDataNascimento.Size = new System.Drawing.Size(120, 20);
+            this.TxtDataNascimento.Size = new System.Drawing.Size(143, 29);
             this.TxtDataNascimento.TabIndex = 21;
             // 
             // TxtCrmMedico
             // 
-            this.TxtCrmMedico.Location = new System.Drawing.Point(333, 239);
+            this.TxtCrmMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCrmMedico.Location = new System.Drawing.Point(314, 239);
             this.TxtCrmMedico.Name = "TxtCrmMedico";
             this.TxtCrmMedico.ReadOnly = true;
-            this.TxtCrmMedico.Size = new System.Drawing.Size(40, 20);
+            this.TxtCrmMedico.Size = new System.Drawing.Size(73, 26);
             this.TxtCrmMedico.TabIndex = 22;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(287, 242);
+            this.label12.Location = new System.Drawing.Point(277, 247);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(31, 13);
             this.label12.TabIndex = 23;
@@ -268,16 +282,17 @@
             // 
             // TxtCodigoExame
             // 
-            this.TxtCodigoExame.Location = new System.Drawing.Point(571, 202);
+            this.TxtCodigoExame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCodigoExame.Location = new System.Drawing.Point(561, 196);
             this.TxtCodigoExame.Name = "TxtCodigoExame";
             this.TxtCodigoExame.ReadOnly = true;
-            this.TxtCodigoExame.Size = new System.Drawing.Size(40, 20);
+            this.TxtCodigoExame.Size = new System.Drawing.Size(40, 26);
             this.TxtCodigoExame.TabIndex = 24;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(525, 205);
+            this.label13.Location = new System.Drawing.Point(515, 204);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(40, 13);
             this.label13.TabIndex = 25;
@@ -325,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 370);
+            this.ClientSize = new System.Drawing.Size(801, 407);
             this.Controls.Add(this.TxtCodigoAgendamento);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.TxtCodigoEspecialidade);

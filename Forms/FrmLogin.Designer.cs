@@ -131,7 +131,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label LblDadosIncorretos;
+        public System.Windows.Forms.Label LblDadosIncorretos;
         private System.Windows.Forms.TextBox TxtNome;
         private System.Windows.Forms.TextBox TxtSenha;
         private System.Windows.Forms.Button BtnEntrar;
