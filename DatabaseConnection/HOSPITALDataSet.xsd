@@ -123,37 +123,37 @@ SELECT cd_paciente, nm_paciente FROM PACIENTE WHERE (cd_paciente = @cd_paciente)
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="HOSPITALDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="HOSPITALDataSet" msprop:Generator_DataSetName="HOSPITALDataSet">
+  <xs:element name="HOSPITALDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="HOSPITALDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="HOSPITALDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="EXAME" msprop:Generator_RowEvHandlerName="EXAMERowChangeEventHandler" msprop:Generator_RowDeletedName="EXAMERowDeleted" msprop:Generator_RowDeletingName="EXAMERowDeleting" msprop:Generator_RowEvArgName="EXAMERowChangeEvent" msprop:Generator_TablePropName="EXAME" msprop:Generator_RowChangedName="EXAMERowChanged" msprop:Generator_RowChangingName="EXAMERowChanging" msprop:Generator_TableClassName="EXAMEDataTable" msprop:Generator_RowClassName="EXAMERow" msprop:Generator_TableVarName="tableEXAME" msprop:Generator_UserTableName="EXAME">
+        <xs:element name="EXAME" msprop:Generator_RowClassName="EXAMERow" msprop:Generator_RowEvHandlerName="EXAMERowChangeEventHandler" msprop:Generator_RowDeletedName="EXAMERowDeleted" msprop:Generator_RowDeletingName="EXAMERowDeleting" msprop:Generator_RowEvArgName="EXAMERowChangeEvent" msprop:Generator_TablePropName="EXAME" msprop:Generator_RowChangedName="EXAMERowChanged" msprop:Generator_UserTableName="EXAME" msprop:Generator_RowChangingName="EXAMERowChanging" msprop:Generator_TableClassName="EXAMEDataTable" msprop:Generator_TableVarName="tableEXAME">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="cd_exame" msprop:Generator_ColumnPropNameInRow="cd_exame" msprop:Generator_ColumnPropNameInTable="cd_exameColumn" msprop:Generator_ColumnVarNameInTable="columncd_exame" msprop:Generator_UserColumnName="cd_exame" type="xs:int" />
-              <xs:element name="nm_exame" msprop:Generator_ColumnPropNameInRow="nm_exame" msprop:Generator_ColumnPropNameInTable="nm_exameColumn" msprop:Generator_ColumnVarNameInTable="columnnm_exame" msprop:Generator_UserColumnName="nm_exame">
+              <xs:element name="cd_exame" msprop:Generator_UserColumnName="cd_exame" msprop:Generator_ColumnPropNameInTable="cd_exameColumn" msprop:Generator_ColumnPropNameInRow="cd_exame" msprop:Generator_ColumnVarNameInTable="columncd_exame" type="xs:int" />
+              <xs:element name="nm_exame" msprop:Generator_UserColumnName="nm_exame" msprop:Generator_ColumnPropNameInTable="nm_exameColumn" msprop:Generator_ColumnPropNameInRow="nm_exame" msprop:Generator_ColumnVarNameInTable="columnnm_exame">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="ds_exame" msprop:Generator_ColumnPropNameInRow="ds_exame" msprop:Generator_ColumnPropNameInTable="ds_exameColumn" msprop:Generator_ColumnVarNameInTable="columnds_exame" msprop:Generator_UserColumnName="ds_exame">
+              <xs:element name="ds_exame" msprop:Generator_UserColumnName="ds_exame" msprop:Generator_ColumnPropNameInTable="ds_exameColumn" msprop:Generator_ColumnPropNameInRow="ds_exame" msprop:Generator_ColumnVarNameInTable="columnds_exame">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="400" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="dt_exame" msprop:Generator_ColumnPropNameInRow="dt_exame" msprop:Generator_ColumnPropNameInTable="dt_exameColumn" msprop:Generator_ColumnVarNameInTable="columndt_exame" msprop:Generator_UserColumnName="dt_exame" type="xs:dateTime" />
-              <xs:element name="cd_paciente" msprop:Generator_ColumnPropNameInRow="cd_paciente" msprop:Generator_ColumnPropNameInTable="cd_pacienteColumn" msprop:Generator_ColumnVarNameInTable="columncd_paciente" msprop:Generator_UserColumnName="cd_paciente" type="xs:int" />
+              <xs:element name="dt_exame" msprop:Generator_UserColumnName="dt_exame" msprop:Generator_ColumnPropNameInTable="dt_exameColumn" msprop:Generator_ColumnPropNameInRow="dt_exame" msprop:Generator_ColumnVarNameInTable="columndt_exame" type="xs:dateTime" />
+              <xs:element name="cd_paciente" msprop:Generator_UserColumnName="cd_paciente" msprop:Generator_ColumnPropNameInTable="cd_pacienteColumn" msprop:Generator_ColumnPropNameInRow="cd_paciente" msprop:Generator_ColumnVarNameInTable="columncd_paciente" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="PACIENTE" msprop:Generator_RowEvHandlerName="PACIENTERowChangeEventHandler" msprop:Generator_RowDeletedName="PACIENTERowDeleted" msprop:Generator_RowDeletingName="PACIENTERowDeleting" msprop:Generator_RowEvArgName="PACIENTERowChangeEvent" msprop:Generator_TablePropName="PACIENTE" msprop:Generator_RowChangedName="PACIENTERowChanged" msprop:Generator_RowChangingName="PACIENTERowChanging" msprop:Generator_TableClassName="PACIENTEDataTable" msprop:Generator_RowClassName="PACIENTERow" msprop:Generator_TableVarName="tablePACIENTE" msprop:Generator_UserTableName="PACIENTE">
+        <xs:element name="PACIENTE" msprop:Generator_RowClassName="PACIENTERow" msprop:Generator_RowEvHandlerName="PACIENTERowChangeEventHandler" msprop:Generator_RowDeletedName="PACIENTERowDeleted" msprop:Generator_RowDeletingName="PACIENTERowDeleting" msprop:Generator_RowEvArgName="PACIENTERowChangeEvent" msprop:Generator_TablePropName="PACIENTE" msprop:Generator_RowChangedName="PACIENTERowChanged" msprop:Generator_UserTableName="PACIENTE" msprop:Generator_RowChangingName="PACIENTERowChanging" msprop:Generator_TableClassName="PACIENTEDataTable" msprop:Generator_TableVarName="tablePACIENTE">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="cd_paciente" msprop:Generator_ColumnPropNameInRow="cd_paciente" msprop:Generator_ColumnPropNameInTable="cd_pacienteColumn" msprop:Generator_ColumnVarNameInTable="columncd_paciente" msprop:Generator_UserColumnName="cd_paciente" type="xs:int" />
-              <xs:element name="nm_paciente" msprop:Generator_ColumnPropNameInRow="nm_paciente" msprop:Generator_ColumnPropNameInTable="nm_pacienteColumn" msprop:Generator_ColumnVarNameInTable="columnnm_paciente" msprop:Generator_UserColumnName="nm_paciente">
+              <xs:element name="cd_paciente" msprop:Generator_UserColumnName="cd_paciente" msprop:Generator_ColumnPropNameInTable="cd_pacienteColumn" msprop:Generator_ColumnPropNameInRow="cd_paciente" msprop:Generator_ColumnVarNameInTable="columncd_paciente" type="xs:int" />
+              <xs:element name="nm_paciente" msprop:Generator_UserColumnName="nm_paciente" msprop:Generator_ColumnPropNameInTable="nm_pacienteColumn" msprop:Generator_ColumnPropNameInRow="nm_paciente" msprop:Generator_ColumnVarNameInTable="columnnm_paciente">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -176,7 +176,7 @@ SELECT cd_paciente, nm_paciente FROM PACIENTE WHERE (cd_paciente = @cd_paciente)
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="fk_paciente" msdata:parent="PACIENTE" msdata:child="EXAME" msdata:parentkey="cd_paciente" msdata:childkey="cd_paciente" msprop:Generator_UserParentTable="PACIENTE" msprop:Generator_UserChildTable="EXAME" msprop:Generator_RelationVarName="relationfk_paciente" msprop:Generator_UserRelationName="fk_paciente" msprop:Generator_ChildPropName="GetEXAMERows" msprop:Generator_ParentPropName="PACIENTERow" />
+      <msdata:Relationship name="fk_paciente" msdata:parent="PACIENTE" msdata:child="EXAME" msdata:parentkey="cd_paciente" msdata:childkey="cd_paciente" msprop:Generator_UserParentTable="PACIENTE" msprop:Generator_UserChildTable="EXAME" msprop:Generator_RelationVarName="relationfk_paciente" msprop:Generator_ChildPropName="GetEXAMERows" msprop:Generator_ParentPropName="PACIENTERow" msprop:Generator_UserRelationName="fk_paciente" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

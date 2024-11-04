@@ -1,5 +1,6 @@
 ﻿using ControleHospital.Repository;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ControleHospital
@@ -20,7 +21,8 @@ namespace ControleHospital
         {
             get { return TxtSenha.Text; }
         }
-
+               
+         
       
         private void BtnEntrar_Click(object sender, EventArgs e)
         {

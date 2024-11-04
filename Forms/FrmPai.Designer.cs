@@ -104,18 +104,18 @@
             this.doaçãoToolStripMenuItem,
             this.transfusãoToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 48);
             // 
             // doaçãoToolStripMenuItem
             // 
             this.doaçãoToolStripMenuItem.Name = "doaçãoToolStripMenuItem";
-            this.doaçãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.doaçãoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.doaçãoToolStripMenuItem.Text = "Doação";
             // 
             // transfusãoToolStripMenuItem
             // 
             this.transfusãoToolStripMenuItem.Name = "transfusãoToolStripMenuItem";
-            this.transfusãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.transfusãoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.transfusãoToolStripMenuItem.Text = "Transfusão";
             this.transfusãoToolStripMenuItem.Click += new System.EventHandler(this.transfusãoToolStripMenuItem_Click);
             // 
@@ -188,16 +188,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label LblConectado;
+        public System.Windows.Forms.Label LblConectado;
         private System.Windows.Forms.Label LblInfoColaborador;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnConsultarExame;
-        private System.Windows.Forms.Button BtnHemoBanco;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        public System.Windows.Forms.Button BtnHemoBanco;
+        public System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem doaçãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transfusãoToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox ImgCheck;
+        public System.Windows.Forms.PictureBox ImgCheck;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BtnAgendarExame;
     }

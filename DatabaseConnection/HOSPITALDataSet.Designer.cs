@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace ControleHospital {
+namespace ControleHospital.DatabaseConnection {
     
     
     /// <summary>
@@ -1109,7 +1109,7 @@ namespace ControleHospital {
         }
     }
 }
-namespace ControleHospital.HOSPITALDataSetTableAdapters {
+namespace ControleHospital.DatabaseConnection.HOSPITALDataSetTableAdapters {
     
     
     /// <summary>

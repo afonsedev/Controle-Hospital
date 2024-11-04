@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System.Windows;
 using System.Windows.Forms;
-using static System.Windows.Forms.AxHost;
+using MessageBox = System.Windows.MessageBox;
 
 namespace ControleHospital
 {
@@ -22,7 +19,15 @@ namespace ControleHospital
         public Conexao()
         {
             // Inicialize a string de conexão aqui.
-            connectionString = @"Data Source = ACER-ASPIRE; Integrated Security = True; Connect Timeout = 30; Encrypt=True; TrustServerCertificate= True; ApplicationIntent = ReadWrite; MultiSubnetFailover=False";
+            // connectionString = @"Data Source = ACER-ASPIRE; Integrated Security = True; Connect Timeout = 30; Encrypt=True; TrustServerCertificate= True; ApplicationIntent = ReadWrite; MultiSubnetFailover=False";
+            //connectionString = @"Server=tcp:server-database-hospital.database.windows.net,1433;Initial Catalog=HOSPITAL;Persist Security Info=False;User ID=dba;Password=senhaForte123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+
+            //var keyVault = new SecretClient(new Uri("https://key-hospital.vault.azure.net/"), new DefaultAzureCredential());
+            //KeyVaultSecret secret = keyVault.GetSecret("DatabaseConnectionString");
+            //connectionString = secret.Value;
+
+            connectionString = "Server=tcp:server-hospital.database.windows.net,1433;Initial Catalog=HOSPITAL;Persist Security Info=False;User ID=dba;Password=senhaForte123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";         
         }
 
         // Método para abrir uma conexão
@@ -40,7 +45,7 @@ namespace ControleHospital
             {
                 MessageBox.Show("Falha :(");
             }
-            
+
             return conexao;
         }
 
@@ -48,7 +53,7 @@ namespace ControleHospital
         {
             try
             {
-                if(conexao != null && conexao.State == ConnectionState.Open)
+                if (conexao != null && conexao.State == ConnectionState.Open)
                 {
                     conexao.Close();
                 }
@@ -78,12 +83,29 @@ namespace ControleHospital
                     {
                         DataTable tabela = new DataTable();
                         adaptador.Fill(tabela);
+
                         return tabela;
                     }
-
                 }
             }
         }
 
-    }
-}
+
+        public object ExecutarEscalar(string query, SqlParameter[] parametros = null)
+        {
+            using (SqlConnection conexao = AbrirConexao())
+            {
+                using (SqlCommand comando = new SqlCommand(query, conexao))
+                {
+                    if (parametros != null && query.Contains("SCOPE_IDENTITY()"))
+                    {
+                        comando.Parameters.AddRange(parametros);
+                    }
+
+                    return comando.ExecuteScalar();                    
+                }
+            }
+        }
+
+     }
+ }

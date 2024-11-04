@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        public void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAgendaExame));
             this.label1 = new System.Windows.Forms.Label();
@@ -247,7 +247,7 @@
             this.BtnAgendaExame.Location = new System.Drawing.Point(621, 312);
             this.BtnAgendaExame.Name = "BtnAgendaExame";
             this.BtnAgendaExame.Size = new System.Drawing.Size(122, 44);
-            this.BtnAgendaExame.TabIndex = 20;
+            this.BtnAgendaExame.TabIndex = 5;
             this.BtnAgendaExame.Text = "Agendar";
             this.BtnAgendaExame.UseVisualStyleBackColor = true;
             this.BtnAgendaExame.Click += new System.EventHandler(this.BtnAgendaExame_Click);
@@ -373,7 +373,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAgendaExame";
             this.Text = "Agendar Exame";
-            this.Load += new System.EventHandler(this.FrmAdicionaAgendamentoExame_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,34 +380,34 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox TxtNomeExame;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TxtCpfPaciente;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox txtMedicoResponsavelExame;
-        private System.Windows.Forms.ComboBox txtSalaExame;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker DateTimeExame;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtEspecialidadeExame;
-        private System.Windows.Forms.TextBox TxtNomePaciente;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox TxtCodigoPaciente;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button BtnAgendaExame;
-        private System.Windows.Forms.TextBox TxtDataNascimento;
-        private System.Windows.Forms.TextBox TxtCrmMedico;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox TxtCodigoExame;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox TxtCodigoEspecialidade;
-        private System.Windows.Forms.Label CodigoEspecialidade;
-        private System.Windows.Forms.TextBox TxtCodigoAgendamento;
-        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ComboBox TxtNomeExame;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox TxtCpfPaciente;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.ComboBox txtMedicoResponsavelExame;
+        public System.Windows.Forms.ComboBox txtSalaExame;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.DateTimePicker DateTimeExame;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox txtEspecialidadeExame;
+        public System.Windows.Forms.TextBox TxtNomePaciente;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox TxtCodigoPaciente;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Button BtnAgendaExame;
+        public System.Windows.Forms.TextBox TxtDataNascimento;
+        public System.Windows.Forms.TextBox TxtCrmMedico;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.TextBox TxtCodigoExame;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox TxtCodigoEspecialidade;
+        public System.Windows.Forms.Label CodigoEspecialidade;
+        public System.Windows.Forms.TextBox TxtCodigoAgendamento;
+        public System.Windows.Forms.Label label14;
     }
 }

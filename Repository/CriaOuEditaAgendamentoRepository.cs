@@ -1,108 +1,48 @@
-﻿using ControleHospital.Repository;
-using System;
+﻿using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Data;
 using System.Windows.Forms;
+using System;
+using System.Linq;
+using ControleHospital.Forms;
 
-namespace ControleHospital.Forms
+namespace ControleHospital.Repository
 {
-    public partial class FrmAgendaExame : Form
+    public class CriaOuEditaAgendamentoRepository
     {
+        private FrmAgendaExame frmAgendaExame;
 
-        public bool IsEditing = false;
-        CriaOuEditaAgendamentoRepository criaOuEditaAgendamentoRepository = new CriaOuEditaAgendamentoRepository();
-
-        public FrmAgendaExame()
+        public CriaOuEditaAgendamentoRepository(FrmAgendaExame frmAgendaExame, string nomeExame, DateTime dataExame, int codigoPaciente, string cpfPaciente, string nomePaciente, int crmMedico, string nomeMedico, string especialidade, int sala, int codigoAgendamento)
         {
-            InitializeComponent();
-        }
+            this.frmAgendaExame = frmAgendaExame;
 
-        public FrmAgendaExame(string nomeExame, DateTime dataExame, int codigoPaciente, string cpfPaciente, string nomePaciente, int crmMedico, string nomeMedico, string especialidade, int sala, int codigoAgendamento)
-        {
-            InitializeComponent();
-            TxtNomeExame.Text = nomeExame;
-            DateTimeExame.Value = dataExame;
-            TxtCodigoPaciente.Text = codigoPaciente.ToString();
-            TxtNomePaciente.Text = nomePaciente;
-            TxtCpfPaciente.Text = cpfPaciente;
-            TxtCrmMedico.Text = crmMedico.ToString();
-            txtMedicoResponsavelExame.Text = nomeMedico;
-            txtEspecialidadeExame.Text = especialidade;
-            txtSalaExame.Text = sala.ToString();
-            TxtCodigoAgendamento.Text = codigoAgendamento.ToString();
+            frmAgendaExame.TxtNomeExame.Text = nomeExame;
+            frmAgendaExame.DateTimeExame.Value = dataExame;
+            frmAgendaExame.TxtCodigoPaciente.Text = codigoPaciente.ToString();
+            frmAgendaExame.TxtNomePaciente.Text = nomePaciente;
+            frmAgendaExame.TxtCpfPaciente.Text = cpfPaciente;
+            frmAgendaExame.TxtCrmMedico.Text = crmMedico.ToString();
+            frmAgendaExame.txtMedicoResponsavelExame.Text = nomeMedico;
+            frmAgendaExame.txtEspecialidadeExame.Text = especialidade;
+            frmAgendaExame.txtSalaExame.Text = sala.ToString();
+            frmAgendaExame.TxtCodigoAgendamento.Text = codigoAgendamento.ToString();
 
-            IsEditing = true;
+            frmAgendaExame.IsEditing = true;
+
+            frmAgendaExame.Text = "Editar Exame";
+            frmAgendaExame.BtnAgendaExame.Text = "Editar Agendamento";
 
 
-            Text = "Editar Exame";
-            BtnAgendaExame.Text = "Editar Agendamento";
             //Name = "Editar Exame";
             //TxtNomeExame.DroppedDown = false;
         }
 
-
-        //Eventos
-        private void BtnAgendaExame_Click(object sender, EventArgs e)
+        public CriaOuEditaAgendamentoRepository()
         {
-
-            AgendarOuEditarExame();
         }
 
-
-        private void TxtCpfPaciente_TextChanged(object sender, EventArgs e)
-        {
-
-            TxtCpfPaciente.MaxLength = 11;
-            if (TxtCpfPaciente.Text.Length == 11)
-            {
-                MostrarDadosPaciente();
-            }
-        }
-      
-
-        private void TxtCpfPaciente_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true; // Bloqueia a tecla pressionada
-            }
-        }
-
-
-        private void TxtNomeExame_TextChanged(object sender, EventArgs e)
-        {
-            ExibirExamesComboBox();
-        }
-
-
-        private void TxtMedicoResponsavelExame_DropDown(object sender, EventArgs e)
-        {
-            ExibirMedicoEspecializado();
-        }
-
-
-        private void DateTimeExame_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (sender is DateTimePicker dtp && dtp.Value != null)
-            {
-                if (e.KeyCode == Keys.Up)
-                {
-                    dtp.Value = AjustarParaIntervalo(dtp.Value.AddMinutes(30));
-                }
-
-                else if
-                (e.KeyCode == Keys.Down)
-                {
-                    dtp.Value = AjustarParaIntervalo(dtp.Value.AddMinutes(-30));
-                }
-            }
-        }
-
-
-        private DateTime AjustarParaIntervalo(DateTime valor)
+        public DateTime AjustarParaIntervalo(DateTime valor)
         {
             int minutos = valor.Minute;
             if (minutos % 30 != 0)
@@ -112,23 +52,6 @@ namespace ControleHospital.Forms
             return valor;
         }
 
-
-        private void TxtMedicoResponsavelExame_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (txtMedicoResponsavelExame.SelectedItem != null)
-            {
-                string medicoSelecionado = txtMedicoResponsavelExame.SelectedItem.ToString();
-
-                // Verifique se o dicionário foi inicializado e se contém o médico selecionado
-                if (medicoCrmMap != null && medicoCrmMap.ContainsKey(medicoSelecionado))
-                {
-                    TxtCrmMedico.Clear();
-                    TxtCrmMedico.Text = medicoCrmMap[medicoSelecionado].ToString();
-                }
-            }
-        }
-        #region métodos no form
 
         //Métodos
         #region Método para Mostrar dados do Paciente automaticamente
@@ -149,12 +72,12 @@ namespace ControleHospital.Forms
 
                 // Defina os parâmetros para evitar SQL Injection
                 SqlParameter[] parametros = {
-                new SqlParameter("@cpfPaciente", TxtCpfPaciente.Text.Trim())
+                new SqlParameter("@cpfPaciente", frmAgendaExame.TxtCpfPaciente.Text.Trim())
                 //new SqlParameter("@cpfPaciente", TxtCodigoExame.Text.Trim()
                 };
 
-                TxtNomePaciente.Clear();
-                TxtCodigoPaciente.Clear();
+                frmAgendaExame.TxtNomePaciente.Clear();
+                frmAgendaExame.TxtCodigoPaciente.Clear();
                 // Execute a consulta e obtenha o DataTable
 
                 DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
@@ -170,9 +93,9 @@ namespace ControleHospital.Forms
                         paciente.DataNascimento = Convert.ToDateTime(dtr["DATA NASCIMENTO"]);
                     };
 
-                    TxtNomePaciente.Text = paciente.Nome;
-                    TxtCodigoPaciente.Text = paciente.Codigo.ToString();
-                    TxtDataNascimento.Text = paciente.DataNascimento.ToShortDateString();
+                    frmAgendaExame.TxtNomePaciente.Text = paciente.Nome;
+                    frmAgendaExame.TxtCodigoPaciente.Text = paciente.Codigo.ToString();
+                    frmAgendaExame.TxtDataNascimento.Text = paciente.DataNascimento.ToShortDateString();
                 }
 
                 else
@@ -211,7 +134,7 @@ namespace ControleHospital.Forms
             #endregion
 
             SqlParameter[] parametros = {
-                new SqlParameter("@nomeExame", TxtNomeExame.Text.Trim())
+                new SqlParameter("@nomeExame", frmAgendaExame.TxtNomeExame.Text.Trim())
             };
 
             DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
@@ -230,19 +153,19 @@ namespace ControleHospital.Forms
                     especialidade.Codigo = Convert.ToInt32(dtr["CÓDIGO ESPECIALIDADE"]);
                 };
 
-                string textoDigitado = TxtNomeExame.Text;
+                string textoDigitado = frmAgendaExame.TxtNomeExame.Text;
 
-                TxtNomeExame.Items.Clear();
-                txtEspecialidadeExame.Clear();
+                frmAgendaExame.TxtNomeExame.Items.Clear();
+                frmAgendaExame.txtEspecialidadeExame.Clear();
 
                 var opcoesFiltradas = opcoesComboBox.Where(O => O.StartsWith(textoDigitado, StringComparison.OrdinalIgnoreCase)).ToList();
-                TxtNomeExame.Items.AddRange(opcoesFiltradas.ToArray());
+                frmAgendaExame.TxtNomeExame.Items.AddRange(opcoesFiltradas.ToArray());
 
-                txtEspecialidadeExame.Text = especialidade.Nome;
-                TxtCodigoExame.Text = exame.Codigo.ToString();
-                TxtCodigoEspecialidade.Text = especialidade.Codigo.ToString();
+                frmAgendaExame.txtEspecialidadeExame.Text = especialidade.Nome;
+                frmAgendaExame.TxtCodigoExame.Text = exame.Codigo.ToString();
+                frmAgendaExame.TxtCodigoEspecialidade.Text = especialidade.Codigo.ToString();
 
-                TxtNomeExame.DroppedDown = true;
+                frmAgendaExame.TxtNomeExame.DroppedDown = true;
             }
 
             else
@@ -254,7 +177,7 @@ namespace ControleHospital.Forms
 
 
         #region Método para exibir médico especialista
-        readonly Dictionary<string, int> medicoCrmMap = new Dictionary<string, int>();
+        public readonly Dictionary<string, int> medicoCrmMap = new Dictionary<string, int>();
         public void ExibirMedicoEspecializado()
         {
             Conexao conexao = new Conexao();
@@ -277,7 +200,7 @@ namespace ControleHospital.Forms
 
             //Parâmetros SQL
             SqlParameter[] parametros = {
-                new SqlParameter("@especialidade", txtEspecialidadeExame.Text.Trim())
+                new SqlParameter("@especialidade", frmAgendaExame.txtEspecialidadeExame.Text.Trim())
             };
 
             DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
@@ -303,11 +226,11 @@ namespace ControleHospital.Forms
                 sala.Codigo = Convert.ToInt32(dtrSala["SALA"]);
                 opcoesComboBoxSala.Add(dtrSala["SALA"].ToString());
 
-                txtMedicoResponsavelExame.Items.Clear();
-                txtMedicoResponsavelExame.Items.AddRange(opcoesComboBoxMedico.ToArray());
+                frmAgendaExame.txtMedicoResponsavelExame.Items.Clear();
+                frmAgendaExame.txtMedicoResponsavelExame.Items.AddRange(opcoesComboBoxMedico.ToArray());
 
-                txtSalaExame.Items.Clear();
-                txtSalaExame.Items.AddRange(opcoesComboBoxSala.ToArray());
+                frmAgendaExame.txtSalaExame.Items.Clear();
+                frmAgendaExame.txtSalaExame.Items.AddRange(opcoesComboBoxSala.ToArray());
             }
         }
         #endregion
@@ -332,16 +255,16 @@ namespace ControleHospital.Forms
 
                 SqlParameter[] parametros =
                 {
-                    new SqlParameter("@codigoExame", TxtCodigoExame.Text),
-                    new SqlParameter("@dataExame", DateTimeExame.Text),
-                    new SqlParameter("@codigoPaciente", TxtCodigoPaciente.Text),
-                    new SqlParameter("@crmMedico", TxtCrmMedico.Text),
-                    new SqlParameter("@especialidade", TxtCodigoEspecialidade.Text),
-                    new SqlParameter("@sala", txtSalaExame.Text),
-                    new SqlParameter("@codigoAgendamento", TxtCodigoAgendamento.Text)
+                    new SqlParameter("@codigoExame", frmAgendaExame.TxtCodigoExame.Text),
+                    new SqlParameter("@dataExame", frmAgendaExame.DateTimeExame.Text),
+                    new SqlParameter("@codigoPaciente", frmAgendaExame.TxtCodigoPaciente.Text),
+                    new SqlParameter("@crmMedico", frmAgendaExame.TxtCrmMedico.Text),
+                    new SqlParameter("@especialidade", frmAgendaExame.TxtCodigoEspecialidade.Text),
+                    new SqlParameter("@sala", frmAgendaExame.txtSalaExame.Text),
+                    new SqlParameter("@codigoAgendamento", frmAgendaExame.TxtCodigoAgendamento.Text)
                 };
 
-                if (IsEditing == true)
+                if (frmAgendaExame.IsEditing == true)
                 {
                     DataTable resultado = conexao.ExecutarConsulta(sqlQueryEditarAgendamento, parametros);
                     MessageBox.Show("Alterações realizadas com sucesso");
@@ -365,9 +288,6 @@ namespace ControleHospital.Forms
                 return;
             }
         }
-
         #endregion
-
     }
 }
-#endregion
