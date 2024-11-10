@@ -1,12 +1,7 @@
-﻿using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
-using ControleHospital.Provider;
+﻿using ControleHospital.Provider;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Security.Cryptography;
-using System.Windows;
-using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ControleHospital
@@ -16,20 +11,8 @@ namespace ControleHospital
         private readonly string connectionString;
         public bool isConnected = false;
 
-
         public Conexao()
-        {
-            // Inicialize a string de conexão aqui.
-            // connectionString = @"Data Source = ACER-ASPIRE; Integrated Security = True; Connect Timeout = 30; Encrypt=True; TrustServerCertificate= True; ApplicationIntent = ReadWrite; MultiSubnetFailover=False";
-            //connectionString = @"Server=tcp:server-database-hospital.database.windows.net,1433;Initial Catalog=HOSPITAL;Persist Security Info=False;User ID=dba;Password=senhaForte123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
-
-            //var keyVault = new SecretClient(new Uri("https://key-hospital.vault.azure.net/"), new DefaultAzureCredential());
-            //KeyVaultSecret secret = keyVault.GetSecret("DatabaseConnectionString");
-            //connectionString = secret.Value;
-            
-            //connectionString = "Server=tcp:server-hospital.database.windows.net,1433;Initial Catalog=HOSPITAL;Persist Security Info=False;User ID=dba;Password=senhaForte123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";         
-
+        {           
             connectionString = ConnectionProvider.HospitalConnectionString;
         }
 
@@ -104,9 +87,9 @@ namespace ControleHospital
                         comando.Parameters.AddRange(parametros);
                     }
 
-                    return comando.ExecuteScalar();                    
+                    return comando.ExecuteScalar();
                 }
             }
         }
-     }
- }
+    }
+}
