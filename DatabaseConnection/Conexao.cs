@@ -1,5 +1,6 @@
 ﻿using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using ControleHospital.Provider;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -26,11 +27,13 @@ namespace ControleHospital
             //var keyVault = new SecretClient(new Uri("https://key-hospital.vault.azure.net/"), new DefaultAzureCredential());
             //KeyVaultSecret secret = keyVault.GetSecret("DatabaseConnectionString");
             //connectionString = secret.Value;
+            
+            //connectionString = "Server=tcp:server-hospital.database.windows.net,1433;Initial Catalog=HOSPITAL;Persist Security Info=False;User ID=dba;Password=senhaForte123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";         
 
-            connectionString = "Server=tcp:server-hospital.database.windows.net,1433;Initial Catalog=HOSPITAL;Persist Security Info=False;User ID=dba;Password=senhaForte123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";         
+            connectionString = ConnectionProvider.HospitalConnectionString;
         }
 
-        // Método para abrir uma conexão
+
         public SqlConnection AbrirConexao()
         {
             SqlConnection conexao = new SqlConnection(connectionString);
@@ -49,6 +52,7 @@ namespace ControleHospital
             return conexao;
         }
 
+
         public void FecharConexao(SqlConnection conexao)
         {
             try
@@ -65,8 +69,6 @@ namespace ControleHospital
         }
 
 
-
-        // Método para executar uma consulta SQL e retornar um DataTable
         public DataTable ExecutarConsulta(string query, SqlParameter[] parametros = null)
         {
             using (SqlConnection conexao = AbrirConexao())
@@ -106,6 +108,5 @@ namespace ControleHospital
                 }
             }
         }
-
      }
  }
