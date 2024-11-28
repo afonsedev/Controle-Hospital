@@ -9,7 +9,8 @@ Projeto Windows Forms desenvolvido para ambiente hospitalar com rotina de agenda
 
 ## Como utilizar o app?
 
- - Clonando este repositório
+ - Clonando este repositório (terminal)
+  > 🌟 **git clone https://github.com/afonsedev/Controle-Hospital.git**  
  - [Download do software (abra o setup e concorde com os termos do .NET, após a instalação, abra o arquivo do tipo application manifest na mesma pasta, ou pesquise na Aba Iniciar do Windows)](https://drive.google.com/drive/folders/1Q_ZbrUUaiHhqkPqyaKPh_l3c5NbYzAXO?usp=sharing)
  - [Base de dados dos pacientes, exames,  usuários e salas para testar o software:](https://docs.google.com/spreadsheets/d/1LNnkhQDvv5cafETPO4hO5ZzHu7yJCiW1X9N8TcZkUb4/edit?usp=sharing)
 
