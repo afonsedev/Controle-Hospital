@@ -203,6 +203,7 @@
     <Compile Include="Forms\FrmPai.Designer.cs">
       <DependentUpon>FrmPai.cs</DependentUpon>
     </Compile>
+    <Compile Include="Handler\HandlersFrmAgendaExame.cs" />
     <Compile Include="Handler\HandlersFrmConsultaExame.cs" />
     <Compile Include="Handler\HandlersFrmPai.cs" />
     <Compile Include="DatabaseConnection\HOSPITALDataSet.Designer.cs">

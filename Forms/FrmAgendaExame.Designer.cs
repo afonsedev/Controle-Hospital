@@ -305,7 +305,6 @@
             this.TxtCodigoEspecialidade.ReadOnly = true;
             this.TxtCodigoEspecialidade.Size = new System.Drawing.Size(40, 20);
             this.TxtCodigoEspecialidade.TabIndex = 26;
-            this.TxtCodigoEspecialidade.Visible = false;
             // 
             // CodigoEspecialidade
             // 

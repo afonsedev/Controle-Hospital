@@ -1,66 +1,79 @@
-﻿using static System.Net.Mime.MediaTypeNames;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
-using System;
+using System.Data.SqlClient;
 using System.Linq;
-using ControleHospital.Forms;
+using System.Windows.Forms;
 
 namespace ControleHospital.Repository
 {
     public class CriaOuEditaAgendamentoRepository
     {
-        private FrmAgendaExame frmAgendaExame;
 
-        public CriaOuEditaAgendamentoRepository(FrmAgendaExame frmAgendaExame, string nomeExame, DateTime dataExame, int codigoPaciente, string cpfPaciente, string nomePaciente, int crmMedico, string nomeMedico, string especialidade, int sala, int codigoAgendamento)
-        {
-            this.frmAgendaExame = frmAgendaExame;
-
-            frmAgendaExame.TxtNomeExame.Text = nomeExame;
-            frmAgendaExame.DateTimeExame.Value = dataExame;
-            frmAgendaExame.TxtCodigoPaciente.Text = codigoPaciente.ToString();
-            frmAgendaExame.TxtNomePaciente.Text = nomePaciente;
-            frmAgendaExame.TxtCpfPaciente.Text = cpfPaciente;
-            frmAgendaExame.TxtCrmMedico.Text = crmMedico.ToString();
-            frmAgendaExame.txtMedicoResponsavelExame.Text = nomeMedico;
-            frmAgendaExame.txtEspecialidadeExame.Text = especialidade;
-            frmAgendaExame.txtSalaExame.Text = sala.ToString();
-            frmAgendaExame.TxtCodigoAgendamento.Text = codigoAgendamento.ToString();
-
-            frmAgendaExame.IsEditing = true;
-
-            frmAgendaExame.Text = "Editar Exame";
-            frmAgendaExame.BtnAgendaExame.Text = "Editar Agendamento";
+        readonly Conexao conexao = new Conexao();
 
 
-            //Name = "Editar Exame";
-            //TxtNomeExame.DroppedDown = false;
-        }
-
-        public CriaOuEditaAgendamentoRepository()
-        {
-        }
-
-        public DateTime AjustarParaIntervalo(DateTime valor)
-        {
-            int minutos = valor.Minute;
-            if (minutos % 30 != 0)
-            {
-                valor = new DateTime(valor.Year, valor.Month, valor.Day, valor.Hour, (minutos < 30 ? 0 : 30), 0);
-            }
-            return valor;
-        }
-
-
-        //Métodos
-        #region Método para Mostrar dados do Paciente automaticamente
-        public void MostrarDadosPaciente()
+        #region Método para Agendar Exame
+        public void AgendarOuEditar(bool IsEditing, string codigoExame, DateTime dataExame, int codigoPaciente, string crmMedico, int especialidade, int sala, int codigoAgendamento)
         {
             try
             {
-                Conexao conexao = new Conexao();
+                string sqlQueryAgendar = @"INSERT INTO HOSPITAL.dbo.AGENDAMENTO_EXAME
+                                               (cd_exame, dt_exame, cd_paciente, cd_crm_medico, cd_especialidade, cd_sala)
+                                               VALUES (@codigoExame, @dataExame, @codigoPaciente, @crmMedico, @especialidade, @sala);
+                                               SELECT SCOPE_IDENTITY()";
 
+                string sqlQueryEditarAgendamento = @"UPDATE HOSPITAL.dbo.AGENDAMENTO_EXAME
+                                                        SET cd_exame = @codigoExame, dt_exame = @dataExame, cd_paciente = @codigoPaciente, cd_crm_medico = @crmMedico, cd_especialidade = @especialidade, cd_sala = @sala
+                                                        WHERE cd_agendamento_exame = @CodigoAgendamento";
+
+
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@codigoExame", codigoExame),
+                    new SqlParameter("@dataExame",  dataExame),
+                    new SqlParameter("@codigoPaciente", codigoPaciente),
+                    new SqlParameter("@crmMedico", crmMedico),
+                    new SqlParameter("@especialidade", especialidade),
+                    new SqlParameter("@sala", sala),
+                    new SqlParameter("@codigoAgendamento", codigoAgendamento)
+                };
+
+
+                if (IsEditing == true)
+                {
+                    DataTable resultado = conexao.ExecutarConsulta(sqlQueryEditarAgendamento, parametros);
+                    MessageBox.Show("Alterações realizadas com sucesso");
+                    return;
+                }
+
+                else
+                {
+                    object resultado = conexao.ExecutarEscalar(sqlQueryAgendar, parametros);
+                    int novoCodigoAgendamento = Convert.ToInt32(resultado);
+                    //DataTable resultado = conexao.ExecutarConsulta(sqlQueryAgendar, parametros);
+                    MessageBox.Show($"Código do Agendamento: {novoCodigoAgendamento} \r\nO e-mail sobre o exame foi enviado ao usuário.");
+                    return;
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Dados não inseridos corretamente: {ex.Message}");
+                return;
+            }
+        }
+        #endregion
+
+
+        #region Método para mostrar dados do paciente
+        public void MostrarDadosPaciente(TextBox cpf, TextBox nome, TextBox codigo, TextBox dataNascimento)
+        {
+            try
+            {
+
+                #region SQL Query
                 string sqlQuery = @"SELECT 
                                     HOSPITAL.dbo.PACIENTE.nm_paciente AS 'NOME PACIENTE',
                                     HOSPITAL.dbo.PACIENTE.cd_paciente AS 'CÓDIGO PACIENTE',
@@ -69,22 +82,24 @@ namespace ControleHospital.Repository
                                     FROM HOSPITAL.dbo.PACIENTE                               
 
                                     WHERE HOSPITAL.dbo.PACIENTE.cpf_paciente = @cpfPaciente";
+                #endregion
 
-                // Defina os parâmetros para evitar SQL Injection
-                SqlParameter[] parametros = {
-                new SqlParameter("@cpfPaciente", frmAgendaExame.TxtCpfPaciente.Text.Trim())
-                //new SqlParameter("@cpfPaciente", TxtCodigoExame.Text.Trim()
+
+                SqlParameter[] parametros =
+                {
+                    new SqlParameter("@cpfPaciente", cpf.Text)
                 };
 
-                frmAgendaExame.TxtNomePaciente.Clear();
-                frmAgendaExame.TxtCodigoPaciente.Clear();
-                // Execute a consulta e obtenha o DataTable
+
+                nome.Clear();
+                codigo.Clear();
+
 
                 DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
 
+
                 if (resultado.Rows.Count > 0)
                 {
-
                     DataRow dtr = resultado.Rows[0];
                     Paciente paciente = new Paciente();
                     {
@@ -93,9 +108,9 @@ namespace ControleHospital.Repository
                         paciente.DataNascimento = Convert.ToDateTime(dtr["DATA NASCIMENTO"]);
                     };
 
-                    frmAgendaExame.TxtNomePaciente.Text = paciente.Nome;
-                    frmAgendaExame.TxtCodigoPaciente.Text = paciente.Codigo.ToString();
-                    frmAgendaExame.TxtDataNascimento.Text = paciente.DataNascimento.ToShortDateString();
+                    nome.Text = paciente.Nome;
+                    codigo.Text = paciente.Codigo.ToString();
+                    dataNascimento.Text = paciente.DataNascimento.ToShortDateString();
                 }
 
                 else
@@ -115,10 +130,8 @@ namespace ControleHospital.Repository
 
 
         #region Método para exibir exame
-        public void ExibirExamesComboBox()
+        public void ExibirExamesComboBox(ComboBox nomeExame, TextBox codigoExame, TextBox nomeEspecialidade, TextBox codigoEspecialidade)
         {
-            Conexao conexao = new Conexao();
-
             #region SQL Query
             string sqlQuery = @"SELECT 
                                  HOSPITAL.dbo.EXAME.nm_exame AS 'NOME EXAME',
@@ -133,8 +146,9 @@ namespace ControleHospital.Repository
                                  WHERE HOSPITAL.dbo.EXAME.nm_exame LIKE @nomeExame + '%';";
             #endregion
 
-            SqlParameter[] parametros = {
-                new SqlParameter("@nomeExame", frmAgendaExame.TxtNomeExame.Text.Trim())
+            SqlParameter[] parametros =
+            {
+                new SqlParameter("@nomeExame", nomeExame.Text)
             };
 
             DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
@@ -153,19 +167,19 @@ namespace ControleHospital.Repository
                     especialidade.Codigo = Convert.ToInt32(dtr["CÓDIGO ESPECIALIDADE"]);
                 };
 
-                string textoDigitado = frmAgendaExame.TxtNomeExame.Text;
+                string textoDigitado = nomeExame.Text;
 
-                frmAgendaExame.TxtNomeExame.Items.Clear();
-                frmAgendaExame.txtEspecialidadeExame.Clear();
+                nomeExame.Items.Clear();
+                nomeEspecialidade.Clear();
 
                 var opcoesFiltradas = opcoesComboBox.Where(O => O.StartsWith(textoDigitado, StringComparison.OrdinalIgnoreCase)).ToList();
-                frmAgendaExame.TxtNomeExame.Items.AddRange(opcoesFiltradas.ToArray());
+                nomeExame.Items.AddRange(opcoesFiltradas.ToArray());
 
-                frmAgendaExame.txtEspecialidadeExame.Text = especialidade.Nome;
-                frmAgendaExame.TxtCodigoExame.Text = exame.Codigo.ToString();
-                frmAgendaExame.TxtCodigoEspecialidade.Text = especialidade.Codigo.ToString();
+                nomeEspecialidade.Text = especialidade.Nome;
+                codigoExame.Text = exame.Codigo.ToString();
+                codigoEspecialidade.Text = especialidade.Codigo.ToString();
 
-                frmAgendaExame.TxtNomeExame.DroppedDown = true;
+                nomeExame.DroppedDown = true;
             }
 
             else
@@ -176,13 +190,12 @@ namespace ControleHospital.Repository
         #endregion
 
 
-        #region Método para exibir médico especialista
+        #region Método para exibir médico especializado
         public readonly Dictionary<string, int> medicoCrmMap = new Dictionary<string, int>();
-        public void ExibirMedicoEspecializado()
+        public void ExibirMedicoEspecializado(TextBox nomeEspecialidade, ComboBox medicoEspecializado, ComboBox salaExame)
         {
-            Conexao conexao = new Conexao();
 
-            //Consulta SQL
+            #region Consulta SQL
             string sqlQuery = @"SELECT  
                                     HOSPITAL.dbo.MEDICO.cd_crm_medico AS 'CRM MÉDICO',
                                     HOSPITAL.dbo.MEDICO.nm_medico AS 'NOME MÉDICO',
@@ -197,10 +210,11 @@ namespace ControleHospital.Repository
                                 ON HOSPITAL.dbo.MEDICO.cd_especialidade = HOSPITAL.dbo.SALA.cd_especialidade
 
                                 WHERE HOSPITAL.dbo.ESPECIALIDADE.nm_especialidade = @especialidade";
+            #endregion
 
             //Parâmetros SQL
             SqlParameter[] parametros = {
-                new SqlParameter("@especialidade", frmAgendaExame.txtEspecialidadeExame.Text.Trim())
+                new SqlParameter("@especialidade", nomeEspecialidade.Text.Trim())
             };
 
             DataTable resultado = conexao.ExecutarConsulta(sqlQuery, parametros);
@@ -226,68 +240,14 @@ namespace ControleHospital.Repository
                 sala.Codigo = Convert.ToInt32(dtrSala["SALA"]);
                 opcoesComboBoxSala.Add(dtrSala["SALA"].ToString());
 
-                frmAgendaExame.txtMedicoResponsavelExame.Items.Clear();
-                frmAgendaExame.txtMedicoResponsavelExame.Items.AddRange(opcoesComboBoxMedico.ToArray());
+                medicoEspecializado.Items.Clear();
+                medicoEspecializado.Items.AddRange(opcoesComboBoxMedico.ToArray());
 
-                frmAgendaExame.txtSalaExame.Items.Clear();
-                frmAgendaExame.txtSalaExame.Items.AddRange(opcoesComboBoxSala.ToArray());
+                salaExame.Items.Clear();
+                salaExame.Items.AddRange(opcoesComboBoxSala.ToArray());
             }
         }
         #endregion
 
-
-        #region Método para Agendar Exame
-        public void AgendarOuEditarExame()
-        {
-            try
-            {
-                Conexao conexao = new Conexao();
-                Especialidade especialidade = new Especialidade();
-
-                string sqlQueryAgendar = @"INSERT INTO HOSPITAL.dbo.AGENDAMENTO_EXAME
-                                            VALUES (@codigoExame, @dataExame, @codigoPaciente, @crmMedico, @especialidade, @sala);
-                                           SELECT SCOPE_IDENTITY();";
-
-
-                string sqlQueryEditarAgendamento = @"UPDATE HOSPITAL.dbo.AGENDAMENTO_EXAME
-                                                    SET cd_exame = @codigoExame, dt_exame = @dataExame, cd_paciente = @codigoPaciente, cd_crm_medico = @crmMedico, cd_especialidade = @Especialidade, cd_sala = @sala
-                                                    WHERE cd_agendamento_exame = @CodigoAgendamento";
-
-                SqlParameter[] parametros =
-                {
-                    new SqlParameter("@codigoExame", frmAgendaExame.TxtCodigoExame.Text),
-                    new SqlParameter("@dataExame", frmAgendaExame.DateTimeExame.Text),
-                    new SqlParameter("@codigoPaciente", frmAgendaExame.TxtCodigoPaciente.Text),
-                    new SqlParameter("@crmMedico", frmAgendaExame.TxtCrmMedico.Text),
-                    new SqlParameter("@especialidade", frmAgendaExame.TxtCodigoEspecialidade.Text),
-                    new SqlParameter("@sala", frmAgendaExame.txtSalaExame.Text),
-                    new SqlParameter("@codigoAgendamento", frmAgendaExame.TxtCodigoAgendamento.Text)
-                };
-
-                if (frmAgendaExame.IsEditing == true)
-                {
-                    DataTable resultado = conexao.ExecutarConsulta(sqlQueryEditarAgendamento, parametros);
-                    MessageBox.Show("Alterações realizadas com sucesso");
-                    return;
-                }
-
-                else
-                {
-                    object resultado = conexao.ExecutarEscalar(sqlQueryAgendar, parametros);
-                    int novoCodigoAgendamento = Convert.ToInt32(resultado);
-                    //DataTable resultado = conexao.ExecutarConsulta(sqlQueryAgendar, parametros);
-                    MessageBox.Show($"Código do Agendamento: {novoCodigoAgendamento} \r\nO e-mail sobre o exame foi enviado ao usuário.");
-                    return;
-                }
-            }
-
-
-            catch
-            {
-                MessageBox.Show("Dados não inseridos corretamente.");
-                return;
-            }
-        }
-        #endregion
     }
 }
