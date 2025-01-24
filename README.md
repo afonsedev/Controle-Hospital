@@ -4,6 +4,9 @@
 Projeto Windows Forms desenvolvido para ambiente hospitalar com rotina de agendamento de consultas.
 
 ![Demonstração](Gravação-de-tela-1-_online-video-cutter.com_.gif)
+## Arquitetura de Nuvem Azure
+<img src="Diagrama Hospital.drawio.svg">
+
 
 
 
